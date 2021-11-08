@@ -21,30 +21,30 @@ class FoodCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Food Balancer"),
-      ),
-      body: ListView.builder(itemBuilder: (contex, index) {
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 5.0),
-          child: TextButton.icon(onPressed: (){
-            final cat = _getData()[index].screenType;
-            print("category is $cat");
-          Get.to(FoodPage(),arguments: cat);
-        }, icon: _getData()[index].icon, label: Text(_getData()[index].label), 
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              side: BorderSide(color: Color(0xFF2A8068)),
-              borderRadius: BorderRadius.all(Radius.circular(8))
-            )
-          )
-        )),
-        );
-      },
-      itemCount: _getData().length,)
+        appBar: AppBar(
+          title: Text("Set Makanan"),
+        ),
+        body: ListView.builder(itemBuilder: (contex, index) {
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 5.0),
+            child: TextButton.icon(onPressed: (){
+              final cat = _getData()[index].screenType;
+              print("category is $cat");
+              Get.to(FoodPage(),arguments: cat);
+            }, icon: _getData()[index].icon, label: Text(_getData()[index].label),
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                            side: BorderSide(color: Color(0xFF2A8068)),
+                            borderRadius: BorderRadius.all(Radius.circular(8))
+                        )
+                    )
+                )),
+          );
+        },
+          itemCount: _getData().length,)
     );
   }
 }
