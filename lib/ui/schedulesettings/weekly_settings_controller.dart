@@ -33,8 +33,12 @@ class WeeklySettingsController extends GetxController {
     taskWekData.value = getTaskWekData.copyWith(mainFood: mainFood, sideDish: sideDish, vegitable: vegitable, fruit: fruit);
   }
 
+  _changeDataIfNull(DailyFoodModel data) {
+    return DailyFoodModel(id: data.id, mainFood: data.mainFood??"-", sideDish: data.sideDish??"-", vegitable: data.vegitable??"-", fruit: data.fruit??"-");
+  }
+
   updateCurrentData() async {
-    var res = await DatabaseHelper.instances.dbDailyFoodTransaction.update(getTaskWekData)
+    var res = await DatabaseHelper.instances.dbDailyFoodTransaction.update(_changeDataIfNull(getTaskWekData))
     .then((value) => _taskController.onInit())
     .then((value) => Get.back());
     return res;

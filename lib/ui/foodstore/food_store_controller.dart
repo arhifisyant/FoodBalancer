@@ -74,7 +74,7 @@ class FoodController extends GetxController {
   }
 
   updateData(TaskData data) {
-    final tempData = TaskData(id:data.id, title: addTaskController.text);
+    final tempData = TaskData(id:data.id, title: addTaskController.text, type: data.type);
     DatabaseHelper.instances.dbMainFoodTransacktion.update(tempData).then((value) {
     var index = task.indexWhere((element) => element.id == data.id);
     getTask[index] = tempData;
