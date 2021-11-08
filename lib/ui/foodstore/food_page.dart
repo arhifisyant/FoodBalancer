@@ -9,11 +9,12 @@ class FoodPage extends StatelessWidget {
 
   _showInputDialog(BuildContext context, String title, TaskData taskData) {
     return showDialog(context: context,
-    builder: (BuildContext context) =>
+    builder: (BuildContext builderContext) =>
       AlertDialog(
         title: Text(title),
         content: Container(
           child: TextFormField(
+            
             controller: _taskController.addTaskController,
             decoration: InputDecoration(hintText: "Enter data"),
           ),
@@ -25,6 +26,7 @@ class FoodPage extends StatelessWidget {
             } else {
               _taskController.updateData(taskData);
             }
+            Navigator.pop(builderContext);
           }, icon: Icon(title=="Edit"?Icons.add:Icons.edit), label: Text(title))
         ],
       )
