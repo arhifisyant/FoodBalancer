@@ -25,10 +25,10 @@ class MenuData{
 class HomePage extends StatelessWidget {
 
   List<MenuData> _getData()=> [
-    MenuData(const Icon(Icons.add_task_rounded), "Input Menu", SCREEN_TYPE.INPUT_MENU),
-    MenuData(const Icon(Icons.timelapse_rounded), "Daily Menu", SCREEN_TYPE.DAILY_MENU),
-    MenuData(const Icon(Icons.info_rounded), "Guideline", SCREEN_TYPE.GUIDE),
-    MenuData(const Icon(Icons.person_rounded), "About Us", SCREEN_TYPE.ABOUT),
+    MenuData(const Icon(Icons.add_task_rounded), "Atur Makanan", SCREEN_TYPE.INPUT_MENU),
+    MenuData(const Icon(Icons.timelapse_rounded), "Menu Seminggu", SCREEN_TYPE.DAILY_MENU),
+    MenuData(const Icon(Icons.info_rounded), "Pedoman Gizi Seimbang", SCREEN_TYPE.GUIDE),
+    MenuData(const Icon(Icons.person_rounded), "Tentang Aplikasi", SCREEN_TYPE.ABOUT),
   ];
 
   @override
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
   
     return Scaffold(
       appBar: AppBar(
-        title: Text("Food Balancer"),
+        title: Text("Makan Sehat"),
       ),
       body: ListView.builder(itemBuilder: (contex, index) {
         return Container(
