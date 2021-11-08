@@ -28,7 +28,7 @@ class FoodCategoryPage extends StatelessWidget {
         ),
         body: ListView.builder(itemBuilder: (contex, index) {
           return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 5.0),
+            margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
             child: TextButton.icon(onPressed: (){
               final cat = _getData()[index].screenType;
               print("category is $cat");
