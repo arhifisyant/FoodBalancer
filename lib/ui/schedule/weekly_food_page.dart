@@ -19,12 +19,13 @@ class WeeklyFoodPage extends StatelessWidget {
   ];
 
   _titleTxtStyle() => TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold,);
-  _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.white);
+  _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.white,);
   @override
   Widget build(BuildContext context) {
     _taskController = Get.put(WeeklyFoodControlelr());
     return Scaffold(
-      appBar: AppBar(title: Text("Menu Seminggu"),),
+      appBar: AppBar(title: Text("Menu Seminggu"),
+        centerTitle: true,),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: Column(
@@ -38,20 +39,29 @@ class WeeklyFoodPage extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) => Material(
                       color: Colors.green,
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: InkWell(
                         onTap: () {
                           Get.to(WeeklySettingsPage(), arguments: _taskController.getTask[index]);
                         },
                         child: Container(
-                          child: Column(
-                            children: [
-                              Text(_addDayofName()[index], style: _titleTxtStyle(),),
-                              Text("\n"),
-                              Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
-                              Text("Lauk : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
-                              Text("Sayur : " + _taskController.getTask[index].vegitable!, style: _descTxtStyle()),
-                              Text("Buah : " + _taskController.getTask[index].fruit!,style: _descTxtStyle())
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 2.0),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(_addDayofName()[index], style: _titleTxtStyle(),)),
+                            //  Text("\n"),
+                                SizedBox(height: 2.0),
+                                Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
+                                Text("Lauk : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
+                                Text("Sayur : " + _taskController.getTask[index].vegitable!, style: _descTxtStyle()),
+                                Text("Buah : " + _taskController.getTask[index].fruit!,style: _descTxtStyle())
+                              ],
+                            ),
                           ),),
                       )
                   ),
@@ -59,6 +69,7 @@ class WeeklyFoodPage extends StatelessWidget {
             )
           ],
         ),
+
       ),
     );
   }

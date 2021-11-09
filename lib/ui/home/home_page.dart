@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_balancer/ui/aboutus/about.dart';
 import 'package:food_balancer/ui/foodcat/foot_category_page.dart';
-import 'package:food_balancer/ui/foodstore/food_page.dart';
+
 import 'package:food_balancer/ui/schedule/weekly_food_page.dart';
 import 'package:food_balancer/ui/viewer/pdf_viewer.dart';
 import 'package:get/get.dart';
@@ -33,10 +33,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  //nothing here
-    //nothing here also
+    //print(_getData().length);
+    //print(_getData()[0].screenType);
+    //print(_getData()[0].label);
+    //print(_getData()[0].icon);
     return Scaffold(
-      appBar: AppBar( title: Text("Makan Sehat"),),
+      appBar: AppBar( title: Text("Makan Sehat"),
+        centerTitle: true,),
       body: ListView.builder(itemBuilder: (contex, index) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
@@ -45,7 +48,7 @@ class HomePage extends StatelessWidget {
               case SCREEN_TYPE.INPUT_MENU:
                 Get.to(FoodCategoryPage());
                 break;
-              
+
               case SCREEN_TYPE.DAILY_MENU:
                 Get.to(WeeklyFoodPage());
                 break;
@@ -53,14 +56,14 @@ class HomePage extends StatelessWidget {
               case SCREEN_TYPE.GUIDE:
                 Get.to(PdfGuideViewer());
                 break;
-              
+
               case SCREEN_TYPE.ABOUT:
                 Get.to(AboutPage());
                 break;
               default:
             }
-          
-        }, icon: _getData()[index].icon, label: Text(_getData()[index].label), 
+
+        }, icon: _getData()[index].icon, label: Text(_getData()[index].label),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             const RoundedRectangleBorder(
@@ -71,7 +74,7 @@ class HomePage extends StatelessWidget {
         )),
         );
       },
-      itemCount: _getData().length,)
+     itemCount: _getData().length,)
     );
   }
 }
