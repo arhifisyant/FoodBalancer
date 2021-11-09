@@ -26,7 +26,7 @@ class WeeklySettingsPage extends StatelessWidget {
     _weeklySettingsController.postTaskWeekData = _cleanData(Get.arguments);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Weekly Basis"),),
+      appBar: AppBar(title: Text("Menu Harian"),),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
             _weeklySettingsController.updateCurrentData();
