@@ -39,8 +39,9 @@ class FoodController extends GetxController {
   }
 
   _getData(){
+    task.clear();
     DatabaseHelper.instances.dbMainFoodTransacktion.queryAllbased(category.toString()).then((value) {
-      postTask = value.map((e) => TaskData(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList();
+      postTask = value.map((e) => TaskData(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
       // print("result posttask is ${value.map((e) => TaskData(id:e['id'],title: e['title'])).toList().}");
       getTask.forEach((element) {
         print(element.title);
@@ -67,7 +68,7 @@ class FoodController extends GetxController {
     } else {
       final tempData = TaskData(title: addTaskController.text, type: category);
       await DatabaseHelper.instances.dbMainFoodTransacktion.insert(tempData);
-      task.add(tempData);
+      _getData();
     }
     
     addTaskController.clear();
