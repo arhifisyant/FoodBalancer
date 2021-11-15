@@ -20,6 +20,39 @@ class WeeklySettingsPage extends StatelessWidget {
       );
   }
 
+  String? _updateDataIfNull(FoodType type) {
+    final data = _weeklySettingsController.getTask;
+    final foodData = _weeklySettingsController.getTaskWekData;
+    
+    if(type == FoodType.MAIN_FOOD) {
+      if(data.where((element) => element.type== FoodType.MAIN_FOOD).map((e) => e.title).contains(foodData.mainFood)) {
+        return foodData.mainFood;
+      } else {
+        return null;
+      }
+    } else if(type == FoodType.SIDE_DISH) {
+      if(data.where((element) => element.type== FoodType.SIDE_DISH).map((e) => e.title).contains(foodData.sideDish)) {
+        return foodData.sideDish;
+      } else {
+        return null;
+      }
+    } else if(type == FoodType.VEGETABLE) {
+      if(data.where((element) => element.type== FoodType.VEGETABLE).map((e) => e.title).contains(foodData.vegitable)) {
+        return foodData.vegitable;
+      } else {
+        return null;
+      }
+    } else if(type == FoodType.FRUIT) {
+      if(data.where((element) => element.type== FoodType.FRUIT).map((e) => e.title).contains(foodData.fruit)) {
+        return foodData.fruit;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _weeklySettingsController = Get.put(WeeklySettingsController());
@@ -37,7 +70,7 @@ class WeeklySettingsPage extends StatelessWidget {
       child: Obx(() => Column(
         children: [    
            ListTile(leading: Text("Pokok"), trailing: DropdownButton(
-            value: _weeklySettingsController.getTaskWekData.mainFood,           
+            value: _updateDataIfNull(FoodType.MAIN_FOOD),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(mainFood: value);
             },
@@ -49,7 +82,7 @@ class WeeklySettingsPage extends StatelessWidget {
           
 
           ListTile(leading: Text("Lauk"), trailing: DropdownButton(
-            value: _weeklySettingsController.getTaskWekData.sideDish,           
+            value: _updateDataIfNull(FoodType.SIDE_DISH),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(sideDish: value);
             },
@@ -61,7 +94,7 @@ class WeeklySettingsPage extends StatelessWidget {
 
           
          ListTile(leading: Text("Sayuran"), trailing: DropdownButton(
-            value: _weeklySettingsController.getTaskWekData.vegitable,           
+            value: _updateDataIfNull(FoodType.VEGETABLE),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(vegitable: value);
             },
@@ -72,7 +105,7 @@ class WeeklySettingsPage extends StatelessWidget {
           }).toList()),),
 
          ListTile(leading: Text("Buah"), trailing: DropdownButton(
-            value: _weeklySettingsController.getTaskWekData.fruit,           
+            value: _updateDataIfNull(FoodType.FRUIT),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(fruit: value);
             },

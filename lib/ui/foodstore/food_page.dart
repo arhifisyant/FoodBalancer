@@ -46,6 +46,7 @@ class FoodPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(child: TextFormField(
+                  maxLength: 20,
                   controller: _taskController.addTaskController,
                   decoration: InputDecoration(hintText: "Enter data"),
                 )),
