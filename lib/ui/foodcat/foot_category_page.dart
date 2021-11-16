@@ -14,9 +14,9 @@ class FoodCategoryPage extends StatelessWidget {
 
   List<MenuData> _getData()=> [
     MenuData(const Icon(Icons.add_task_rounded), "Makanan Pokok", SCREEN_CAT_TYPE.MAINFOOD),
-    MenuData(const Icon(Icons.timelapse_rounded), "Lauk", SCREEN_CAT_TYPE.SIDEFOOD),
-    MenuData(const Icon(Icons.info_rounded), "Sayur", SCREEN_CAT_TYPE.VEGETABLE),
-    MenuData(const Icon(Icons.person_rounded), "Buah", SCREEN_CAT_TYPE.FRUIT),
+    MenuData(const Icon(Icons.add_task_rounded), "Lauk", SCREEN_CAT_TYPE.SIDEFOOD),
+    MenuData(const Icon(Icons.add_task_rounded), "Sayur", SCREEN_CAT_TYPE.VEGETABLE),
+    MenuData(const Icon(Icons.add_task_rounded), "Buah", SCREEN_CAT_TYPE.FRUIT),
   ];
 
   @override
@@ -24,7 +24,7 @@ class FoodCategoryPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Set Makanan"),
+          title: Text("Atur Makanan"),
         ),
         body: ListView.builder(itemBuilder: (contex, index) {
           return Container(

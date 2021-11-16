@@ -43,9 +43,9 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.food_balancer"
+        applicationId "com.rplproject.food_balancer"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 21
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

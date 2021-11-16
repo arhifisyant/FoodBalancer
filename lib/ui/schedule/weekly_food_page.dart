@@ -24,7 +24,7 @@ class WeeklyFoodPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _taskController = Get.put(WeeklyFoodControlelr());
     return Scaffold(
-      appBar: AppBar(title: Text("Menu Seminggu"),
+      appBar: AppBar(title: Text("Daftar Menu Seminggu"),
         centerTitle: true,),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
@@ -57,9 +57,9 @@ class WeeklyFoodPage extends StatelessWidget {
                             //  Text("\n"),
                                 SizedBox(height: 2.0),
                                 Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
-                                Text("Lauk : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
-                                Text("Sayur : " + _taskController.getTask[index].vegitable!, style: _descTxtStyle()),
-                                Text("Buah : " + _taskController.getTask[index].fruit!,style: _descTxtStyle())
+                                Text("Lauk    : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
+                                Text("Sayur   : " + _taskController.getTask[index].vegitable!, style: _descTxtStyle()),
+                                Text("Buah    : " + _taskController.getTask[index].fruit!,style: _descTxtStyle())
                               ],
                             ),
                           ),),

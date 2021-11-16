@@ -14,9 +14,9 @@ class FoodPage extends StatelessWidget {
         title: Text(title),
         content: Container(
           child: TextFormField(
-            
             controller: _taskController.addTaskController,
-            decoration: InputDecoration(hintText: "Enter data"),
+            decoration: InputDecoration(hintText: "Edit Makanan"),
+            maxLength: 20,
           ),
         ),
         actions: [
@@ -48,7 +48,7 @@ class FoodPage extends StatelessWidget {
                 Expanded(child: TextFormField(
                   maxLength: 20,
                   controller: _taskController.addTaskController,
-                  decoration: InputDecoration(hintText: "Enter data"),
+                  decoration: InputDecoration(hintText: "Masukkan Data"),
                 )),
                 IconButton(onPressed: (){
                   _taskController.addData();
@@ -57,11 +57,11 @@ class FoodPage extends StatelessWidget {
             ),
             Expanded(child: Obx(() => ListView.builder(
               itemBuilder: (context, index) => ListTile(
-                leading: Text(_taskController.getTask[index].title??""),
+                leading: Text(_taskController.getTask[index].title??""), // ini bikin list makanannya
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(onPressed: ()=> _showInputDialog(context, "Update Data", _taskController.getTask[index]), icon: Icon(Icons.edit)),
+                    IconButton(onPressed: ()=> _showInputDialog(context, "Edit", _taskController.getTask[index]), icon: Icon(Icons.edit)),
                     IconButton(onPressed: ()=> _taskController.deleteTask(_taskController.getTask[index].id), icon: Icon(Icons.delete))
                   ],
                 ),

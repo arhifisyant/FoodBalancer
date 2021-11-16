@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_balancer/ui/aboutus/about.dart';
 import 'package:food_balancer/ui/foodcat/foot_category_page.dart';
-
 import 'package:food_balancer/ui/schedule/weekly_food_page.dart';
 import 'package:food_balancer/ui/viewer/pdf_viewer.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart'; //untuk navigasi ke halaman lain (pake get.)
 
 enum SCREEN_TYPE {
   INPUT_MENU,
@@ -26,9 +25,9 @@ class HomePage extends StatelessWidget {
 
   List<MenuData> _getData()=> [
     MenuData(const Icon(Icons.add_task_rounded), "Atur Makanan", SCREEN_TYPE.INPUT_MENU),
-    MenuData(const Icon(Icons.timelapse_rounded), "Menu Seminggu", SCREEN_TYPE.DAILY_MENU),
+    MenuData(const Icon(Icons.timelapse_rounded), "Daftar Menu Seminggu", SCREEN_TYPE.DAILY_MENU),
     MenuData(const Icon(Icons.info_rounded), "Pedoman Gizi Seimbang", SCREEN_TYPE.GUIDE),
-    MenuData(const Icon(Icons.person_rounded), "Tentang Aplikasi", SCREEN_TYPE.ABOUT),
+    MenuData(const Icon(Icons.info_rounded), "Tentang Aplikasi", SCREEN_TYPE.ABOUT),
   ];
 
   @override
@@ -46,19 +45,23 @@ class HomePage extends StatelessWidget {
           child: TextButton.icon(onPressed: (){
             switch (_getData()[index].screenType) {
               case SCREEN_TYPE.INPUT_MENU:
-                Get.to(FoodCategoryPage());
+                //Get.to(FoodCategoryPage()); // Get.to(() => page()) instead of using Get.to(page()) is better.
+                Get.to(() => FoodCategoryPage());
                 break;
 
               case SCREEN_TYPE.DAILY_MENU:
-                Get.to(WeeklyFoodPage());
+                //Get.to(WeeklyFoodPage());
+                Get.to(() => WeeklyFoodPage());
                 break;
 
               case SCREEN_TYPE.GUIDE:
-                Get.to(PdfGuideViewer());
+                //Get.to(PdfGuideViewer());
+                Get.to(() => PdfGuideViewer());
                 break;
 
               case SCREEN_TYPE.ABOUT:
-                Get.to(AboutPage());
+                //Get.to(AboutPage());
+                Get.to(() => AboutPage());
                 break;
               default:
             }
