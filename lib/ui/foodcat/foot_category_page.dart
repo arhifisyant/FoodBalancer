@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_balancer/ui/foodstore/food_page.dart';
-import 'package:food_balancer/ui/home/home_page.dart';
+import 'package:food_balancer/ui/foodstore/food_store_page.dart';
 import 'package:get/get.dart';
 
 enum SCREEN_CAT_TYPE {
@@ -10,6 +9,14 @@ enum SCREEN_CAT_TYPE {
   VEGETABLE,
   FRUIT
 }
+
+class MenuData{
+  final Icon icon;
+  final String label;
+  final dynamic screenType;
+  MenuData(this.icon, this.label, this.screenType);
+}
+
 class FoodCategoryPage extends StatelessWidget {
 
   List<MenuData> _getData()=> [

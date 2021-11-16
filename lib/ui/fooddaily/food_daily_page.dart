@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:food_balancer/data/model/task.dart';
-import 'package:food_balancer/ui/foodstore/food_store_controller.dart';
-import 'package:food_balancer/ui/schedule/weekly_food_controller.dart';
-import 'package:food_balancer/ui/schedulesettings/weekly_settings_controller.dart';
+import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
 import 'package:get/get.dart';
 
 class WeeklySettingsPage extends StatelessWidget {
@@ -69,7 +67,7 @@ class WeeklySettingsPage extends StatelessWidget {
       body: Container(
       child: Obx(() => Column(
         children: [    
-           ListTile(leading: Text("Pokok"), trailing: DropdownButton(
+           ListTile(leading: Text("Pokok :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.MAIN_FOOD),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(mainFood: value);
@@ -81,7 +79,7 @@ class WeeklySettingsPage extends StatelessWidget {
           }).toList()),),
           
 
-          ListTile(leading: Text("Lauk"), trailing: DropdownButton(
+          ListTile(leading: Text("Lauk    :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.SIDE_DISH),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(sideDish: value);
@@ -93,7 +91,7 @@ class WeeklySettingsPage extends StatelessWidget {
           }).toList()),),
 
           
-         ListTile(leading: Text("Sayuran"), trailing: DropdownButton(
+         ListTile(leading: Text("Sayur   :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.VEGETABLE),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(vegitable: value);
@@ -104,7 +102,7 @@ class WeeklySettingsPage extends StatelessWidget {
             return DropdownMenuItem(child: Text(e.title!), value: e.title,);
           }).toList()),),
 
-         ListTile(leading: Text("Buah"), trailing: DropdownButton(
+         ListTile(leading: Text("Buah    :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.FRUIT),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(fruit: value);

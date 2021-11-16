@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_balancer/data/model/task.dart';
-import 'package:food_balancer/ui/foodcat/foot_category_page.dart';
 import 'package:food_balancer/ui/foodstore/food_store_controller.dart';
 import 'package:get/get.dart';
 

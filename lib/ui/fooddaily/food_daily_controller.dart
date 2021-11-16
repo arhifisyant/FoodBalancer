@@ -2,7 +2,7 @@ import 'package:food_balancer/data/db/db_helper.dart';
 import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/foodstore/food_store_controller.dart';
-import 'package:food_balancer/ui/schedule/weekly_food_controller.dart';
+import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:get/get.dart';
 
 class WeeklySettingsController extends GetxController {

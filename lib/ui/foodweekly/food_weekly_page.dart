@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:food_balancer/ui/schedule/weekly_food_controller.dart';
-import 'package:food_balancer/ui/schedulesettings/weekly_settings_page.dart';
 import 'package:get/get.dart';
+import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
+import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:food_balancer/ui/navdrawer/nav_drawer.dart';
 
-class WeeklyFoodPage extends StatelessWidget {
+class WeeklyFoodPage extends StatefulWidget {
+  @override
+  MainPageState createState() => MainPageState();
+}
+
+class MainPageState extends State<WeeklyFoodPage> {
 
   late WeeklyFoodControlelr _taskController;
 
@@ -24,6 +30,7 @@ class WeeklyFoodPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _taskController = Get.put(WeeklyFoodControlelr());
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(title: Text("Daftar Menu Seminggu"),
         centerTitle: true,),
       body: Container(
@@ -52,9 +59,9 @@ class WeeklyFoodPage extends StatelessWidget {
                               children: [
                                 SizedBox(height: 2.0),
                                 Align(
-                                  alignment: Alignment.center,
-                                  child: Text(_addDayofName()[index], style: _titleTxtStyle(),)),
-                            //  Text("\n"),
+                                    alignment: Alignment.center,
+                                    child: Text(_addDayofName()[index], style: _titleTxtStyle(),)),
+                                //  Text("\n"),
                                 SizedBox(height: 2.0),
                                 Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
                                 Text("Lauk    : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
