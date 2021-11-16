@@ -65,12 +65,13 @@ class FoodController extends GetxController {
   addData() async {
     if(getTask.map((e) => e.title).contains(addTaskController.text)) {
       Get.snackbar("Peringatan", "Data Sudah Tersedia");
+    } else if(false) {
+      Get.snackbar("Peringatan", "Data Tidak Boleh Kosong");
     } else {
       final tempData = TaskData(title: addTaskController.text, type: category);
       await DatabaseHelper.instances.dbMainFoodTransacktion.insert(tempData);
       _getData();
     }
-    
     addTaskController.clear();
   }
 
@@ -79,7 +80,7 @@ class FoodController extends GetxController {
     DatabaseHelper.instances.dbMainFoodTransacktion.update(tempData).then((value) {
     var index = task.indexWhere((element) => element.id == data.id);
     getTask[index] = tempData;
-    var test = <TaskData>[]..addAll(getTask);
+    //var test = <TaskData>[]..addAll(getTask);
     // postTask = test;
     task[index] = tempData;
     getTask.forEach((element) {
