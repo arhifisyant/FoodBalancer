@@ -22,15 +22,15 @@ class WeeklyFoodController extends GetxController {
     DatabaseHelper.instances.dbDailyFoodTransaction.queryAll()
     .then((value) => value.map((e) => DailyFoodModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
-      value.forEach((element) {print("data value is ${element.mainFood}");});
       if(value.isEmpty) {
-        DatabaseHelper.instances.dbDailyFoodTransaction.insertMultipleData(_createDefaultData());
+        DatabaseHelper.instances.dbDailyFoodTransaction.insertMultipleData(_createDefaultData())
+        .then((value) => _getData());
       } else {
         return value;
       }
     })
     .then((value) {    
-      return postTask = value!;
+      postTask = value!;
     });
   }
 
