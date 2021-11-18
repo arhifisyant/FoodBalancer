@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:sqflite/sqflite.dart';
@@ -21,14 +21,14 @@ class DatabaseHelper {
   static final columnFruit = "fruit";
 
   DatabaseHelper._privateConstructor(){
-     dbMainFoodTransacktion = DbMainFoodTransaction(instances: this);
-    dbDailyFoodTransaction = DbDailyFoodTransaction(instances: this);
+      dbMainFoodTransaction = DbMainFoodTransaction(instances: this);
+      dbDailyFoodTransaction = DbDailyFoodTransaction(instances: this);
   }
 
   static final instances = DatabaseHelper._privateConstructor();
 
   static Database? _database;
-  late DbMainFoodTransaction dbMainFoodTransacktion;
+  late DbMainFoodTransaction dbMainFoodTransaction;
   late DbDailyFoodTransaction dbDailyFoodTransaction;
 
   Future<Database> get database async {
@@ -49,6 +49,12 @@ class DatabaseHelper {
     )
     ''');
 
+    /*
+    await db.execute('''
+    INSERT INTO $table($columnTitle, $columnType) VALUES ('Nasi11','mainFood')
+    ''');
+    */
+
     await db.execute('''
     CREATE TABLE $dailyTable(
       $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,6 +64,12 @@ class DatabaseHelper {
       $columnFruit FLOAT NOT NULL
     )
     ''');
+
+    /*await db.execute('''
+    INSERT INTO $dailyTable($columnMainFood, $columnSideDish, $columnVegetable, $columnFruit) VALUES ('Nasi','Tempe','terong','Pisang')
+    ''');
+    */
+
   }
 }
 

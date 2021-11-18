@@ -35,9 +35,6 @@ class WeeklyFoodControlelr extends GetxController {
   }
 
   List<DailyFoodModel> _createDefaultData() {
-    return List.filled(DAY_IN_A_WEEK, 
-      DailyFoodModel()
-    );
+    return List.filled(DAY_IN_A_WEEK, DailyFoodModel() );
   }
-
 }

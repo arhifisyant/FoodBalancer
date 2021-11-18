@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:food_balancer/data/db/db_helper.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/foodcat/foot_category_page.dart';
-import 'package:get/get.dart';
 
 
 class FoodController extends GetxController {
@@ -40,7 +40,7 @@ class FoodController extends GetxController {
 
   _getData(){
     task.clear();
-    DatabaseHelper.instances.dbMainFoodTransacktion.queryAllbased(category.toString()).then((value) {
+    DatabaseHelper.instances.dbMainFoodTransaction.queryAllbased(category.toString()).then((value) {
       postTask = value.map((e) => TaskData(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
       // print("result posttask is ${value.map((e) => TaskData(id:e['id'],title: e['title'])).toList().}");
       getTask.forEach((element) {
@@ -69,7 +69,7 @@ class FoodController extends GetxController {
       Get.snackbar("Peringatan", "Data Tidak Boleh Kosong");
     } else {
       final tempData = TaskData(title: addTaskController.text, type: category);
-      await DatabaseHelper.instances.dbMainFoodTransacktion.insert(tempData);
+      await DatabaseHelper.instances.dbMainFoodTransaction.insert(tempData);
       _getData();
     }
     addTaskController.clear();
@@ -77,7 +77,7 @@ class FoodController extends GetxController {
 
   updateData(TaskData data) {
     final tempData = TaskData(id:data.id, title: addTaskController.text, type: data.type);
-    DatabaseHelper.instances.dbMainFoodTransacktion.update(tempData).then((value) {
+    DatabaseHelper.instances.dbMainFoodTransaction.update(tempData).then((value) {
     var index = task.indexWhere((element) => element.id == data.id);
     getTask[index] = tempData;
     //var test = <TaskData>[]..addAll(getTask);
@@ -94,7 +94,7 @@ class FoodController extends GetxController {
 
   deleteTask(int? id) async {
     if(id != null) {
-      await DatabaseHelper.instances.dbMainFoodTransacktion.delete(id);
+      await DatabaseHelper.instances.dbMainFoodTransaction.delete(id);
       task.removeWhere((element) => element.id == id);
     }
     

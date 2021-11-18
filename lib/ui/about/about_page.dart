@@ -9,10 +9,10 @@ class AboutPage extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         alignment: Alignment.topCenter,
         child: const Text('''
-        Aplikasi ini dipersembahkan untuk keluarga dalam rangka mengatur menu makanan dengan gizi seimbang.  
+        Aplikasi ini dipersembahkan untuk keluarga dalam rangka mengatur variasi menu makanan dengan gizi seimbang. Mencakup variasi Makanan Pokok, Lauk, Sayur, dan Buah. 
         \n \n Arif Rahman Isyanto
         ''',
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center,
         ),
       ),

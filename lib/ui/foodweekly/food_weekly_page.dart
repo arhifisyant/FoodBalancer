@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:food_balancer/ui/navdrawer/nav_drawer.dart';
 
 class WeeklyFoodPage extends StatefulWidget {
@@ -49,7 +49,8 @@ class MainPageState extends State<WeeklyFoodPage> {
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: InkWell(
                         onTap: () {
-                          Get.to(WeeklySettingsPage(), arguments: _taskController.getTask[index]);
+                          Get.to(() => FoodDailyPage(), arguments: _taskController.getTask[index]); //pakailah syntax ini karena lebih baik daripada
+                          //Get.to(FoodDailyPage(), arguments: _taskController.getTask[index]); //sintak yang ini
                         },
                         child: Container(
                           child: Padding(
@@ -62,6 +63,7 @@ class MainPageState extends State<WeeklyFoodPage> {
                                     alignment: Alignment.center,
                                     child: Text(_addDayofName()[index], style: _titleTxtStyle(),)),
                                 //  Text("\n"),
+                                Divider(color: Colors.white70),
                                 SizedBox(height: 2.0),
                                 Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
                                 Text("Lauk    : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),

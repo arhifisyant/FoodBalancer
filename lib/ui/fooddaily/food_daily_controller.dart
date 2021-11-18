@@ -45,7 +45,7 @@ class WeeklySettingsController extends GetxController {
   }
 
   _getAllData() {
-    DatabaseHelper.instances.dbMainFoodTransacktion.queryAll()
+    DatabaseHelper.instances.dbMainFoodTransaction.queryAll()
     .then((value) {
       print("value is $value");
       postTask = value.map((e) => TaskData(id:e['id'],title: e['title'], type: FoodController.getEnumTypeBasedof(e['type']))).toList();

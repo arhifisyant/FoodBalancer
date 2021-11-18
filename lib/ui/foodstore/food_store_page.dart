@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/foodstore/food_store_controller.dart';
-import 'package:get/get.dart';
 
 class FoodPage extends StatelessWidget {
   late FoodController _taskController;

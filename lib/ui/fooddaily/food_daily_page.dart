@@ -4,7 +4,7 @@ import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
 import 'package:get/get.dart';
 
-class WeeklySettingsPage extends StatelessWidget {
+class FoodDailyPage extends StatelessWidget {
 
   late WeeklySettingsController _weeklySettingsController;
 
