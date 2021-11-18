@@ -4,7 +4,7 @@ import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:get/get.dart';
 //import 'package:sqflite/sqlite_api.dart';
 
-class WeeklyFoodControlelr extends GetxController {
+class WeeklyFoodController extends GetxController {
 
   static const DAY_IN_A_WEEK = 7;
 
@@ -20,7 +20,7 @@ class WeeklyFoodControlelr extends GetxController {
 
   _getData() {
     DatabaseHelper.instances.dbDailyFoodTransaction.queryAll()
-    .then((value) => value.map((e) => DailyFoodModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegitable: e['vegetable'], fruit: e['fruit'])).toList())
+    .then((value) => value.map((e) => DailyFoodModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
       value.forEach((element) {print("data value is ${element.mainFood}");});
       if(value.isEmpty) {

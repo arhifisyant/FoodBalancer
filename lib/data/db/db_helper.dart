@@ -109,7 +109,7 @@ Future<int> insert(DailyFoodModel task) async {
 
   Future<int> insertMultipleData(List<DailyFoodModel> data) async {
     Database db = await instances.database;
-    var strQueryValues = data.map((e) => "(${e.id}, '${e.mainFood}', '${e.sideDish}', '${e.vegitable}', '${e.fruit}')").join(",");
+    var strQueryValues = data.map((e) => "(${e.id}, '${e.mainFood}', '${e.sideDish}', '${e.vegetable}', '${e.fruit}')").join(",");
     print("data is $strQueryValues");
     var res = await db.rawInsert('''
     INSERT INTO ${DatabaseHelper.dailyTable}(

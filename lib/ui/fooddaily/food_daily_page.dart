@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
-import 'package:get/get.dart';
 
 class FoodDailyPage extends StatelessWidget {
 
@@ -13,7 +13,7 @@ class FoodDailyPage extends StatelessWidget {
       id: data.id,
       mainFood: data.mainFood!.contains("-")?null:data.mainFood,
       sideDish: data.sideDish!.contains("-")?null:data.sideDish,
-      vegitable: data.vegitable!.contains("-")?null:data.vegitable,
+      vegetable: data.vegetable!.contains("-")?null:data.vegetable,
       fruit: data.fruit!.contains("-")?null:data.fruit,
       );
   }
@@ -35,8 +35,8 @@ class FoodDailyPage extends StatelessWidget {
         return null;
       }
     } else if(type == FoodType.VEGETABLE) {
-      if(data.where((element) => element.type== FoodType.VEGETABLE).map((e) => e.title).contains(foodData.vegitable)) {
-        return foodData.vegitable;
+      if(data.where((element) => element.type== FoodType.VEGETABLE).map((e) => e.title).contains(foodData.vegetable)) {
+        return foodData.vegetable;
       } else {
         return null;
       }
@@ -94,7 +94,7 @@ class FoodDailyPage extends StatelessWidget {
          ListTile(leading: Text("Sayur   :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.VEGETABLE),           
             onChanged: (String? value){              
-              _weeklySettingsController.udpateData(vegitable: value);
+              _weeklySettingsController.udpateData(vegetable: value);
             },
             items: _weeklySettingsController.getTask
           .where((element) => element.type== FoodType.VEGETABLE)

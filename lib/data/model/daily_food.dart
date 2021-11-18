@@ -2,16 +2,16 @@ class DailyFoodModel {
   final int? id;
   final String? mainFood;
   final String? sideDish;
-  final String? vegitable;
+  final String? vegetable;
   final String? fruit;
 
-  DailyFoodModel({this.id, this.mainFood = "-", this.sideDish = "-", this.vegitable = "-", this.fruit = "-"});
+  DailyFoodModel({this.id, this.mainFood = "-", this.sideDish = "-", this.vegetable = "-", this.fruit = "-"});
   Map<String, dynamic> toMap() => 
   {
     'id': id,
     'mainFood' : mainFood,
     'sideDish' : sideDish,
-    'vegetable' : vegitable,
+    'vegetable' : vegetable,
     'fruit': fruit
   };
 
@@ -19,14 +19,14 @@ class DailyFoodModel {
     int? id = null,
      String? mainFood = null,
    String? sideDish = null,
-   String? vegitable = null,
+   String? vegetable = null,
    String? fruit = null
   }) {
     return DailyFoodModel(
       id: id ?? this.id,
       mainFood: mainFood ?? this.mainFood,
       sideDish: sideDish ?? this.sideDish,
-      vegitable: vegitable ?? this.vegitable,
+      vegetable: vegetable ?? this.vegetable,
       fruit: fruit ?? this.fruit
     );
   }

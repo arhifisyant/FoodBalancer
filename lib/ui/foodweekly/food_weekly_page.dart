@@ -12,7 +12,7 @@ class WeeklyFoodPage extends StatefulWidget {
 
 class MainPageState extends State<WeeklyFoodPage> {
 
-  late WeeklyFoodControlelr _taskController;
+  late WeeklyFoodController _taskController;
 
   _addDayofName() => [
     "Senin",
@@ -28,7 +28,7 @@ class MainPageState extends State<WeeklyFoodPage> {
   _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.white,);
   @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(WeeklyFoodControlelr());
+    _taskController = Get.put(WeeklyFoodController());
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(title: Text("Daftar Menu Seminggu"),
@@ -67,7 +67,7 @@ class MainPageState extends State<WeeklyFoodPage> {
                                 SizedBox(height: 2.0),
                                 Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
                                 Text("Lauk    : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
-                                Text("Sayur   : " + _taskController.getTask[index].vegitable!, style: _descTxtStyle()),
+                                Text("Sayur   : " + _taskController.getTask[index].vegetable!, style: _descTxtStyle()),
                                 Text("Buah    : " + _taskController.getTask[index].fruit!,style: _descTxtStyle())
                               ],
                             ),

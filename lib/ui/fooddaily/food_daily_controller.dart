@@ -15,7 +15,7 @@ class WeeklySettingsController extends GetxController {
   set postTaskWeekData(data) => taskWekData.value = data;
   DailyFoodModel get getTaskWekData => taskWekData.value;
 
-  final _taskController = Get.put(WeeklyFoodControlelr());
+  final _taskController = Get.put(WeeklyFoodController());
 
 
   @override
@@ -25,16 +25,16 @@ class WeeklySettingsController extends GetxController {
   }
 
   udpateData({
-     String? mainFood = null,
-   String? sideDish = null,
-   String? vegitable = null,
-   String? fruit = null
+    String? mainFood = null,
+    String? sideDish = null,
+    String? vegetable = null,
+    String? fruit = null
   }) {
-    taskWekData.value = getTaskWekData.copyWith(mainFood: mainFood, sideDish: sideDish, vegitable: vegitable, fruit: fruit);
+    taskWekData.value = getTaskWekData.copyWith(mainFood: mainFood, sideDish: sideDish, vegetable: vegetable, fruit: fruit);
   }
 
   _changeDataIfNull(DailyFoodModel data) {
-    return DailyFoodModel(id: data.id, mainFood: data.mainFood??"-", sideDish: data.sideDish??"-", vegitable: data.vegitable??"-", fruit: data.fruit??"-");
+    return DailyFoodModel(id: data.id, mainFood: data.mainFood??"-", sideDish: data.sideDish??"-", vegetable: data.vegetable??"-", fruit: data.fruit??"-");
   }
 
   updateCurrentData() async {
