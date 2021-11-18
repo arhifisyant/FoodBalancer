@@ -12,8 +12,8 @@ class FoodPage extends StatelessWidget {
       AlertDialog(
         title: Text(title),
         content: Container(
-          child: TextFormField(
-            controller: _taskController.addTaskController,
+          child: TextFormField(            
+            controller: _taskController.addTaskController..text = title=="Tambah"? "":taskData.title??"",
             decoration: InputDecoration(hintText: "Edit Makanan"),
             maxLength: 20,
           ),
