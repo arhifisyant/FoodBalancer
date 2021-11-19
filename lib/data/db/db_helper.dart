@@ -1,9 +1,9 @@
-//import 'package:flutter/foundation.dart';
 import 'package:food_balancer/data/model/daily_food.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
+//import 'package:flutter/foundation.dart';
 
 class DatabaseHelper {
   static final _dbName = "task.db";
@@ -48,12 +48,11 @@ class DatabaseHelper {
       $columnType FLOAT NOT NULL
     )
     ''');
-
-    /*
+/*
     await db.execute('''
-    INSERT INTO $table($columnTitle, $columnType) VALUES ('Nasi11','mainFood')
+    INSERT INTO $table($columnTitle, $columnType) VALUES ('Nasi Goreng Enak',FoodType.MAIN_FOODtoString())
     ''');
-    */
+*/
 
     await db.execute('''
     CREATE TABLE $dailyTable(

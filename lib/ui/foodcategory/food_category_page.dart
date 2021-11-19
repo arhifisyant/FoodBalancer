@@ -1,6 +1,6 @@
+import 'package:food_balancer/ui/foodeditor/food_editor_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_balancer/ui/foodeditor/food_editor_page.dart';
 import 'package:get/get.dart';
 
 enum SCREEN_CAT_TYPE {

@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:food_balancer/data/db/db_helper.dart';
 import 'package:food_balancer/data/model/task.dart';
 import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
-
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FoodController extends GetxController {
 

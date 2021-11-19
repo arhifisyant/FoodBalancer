@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
 import 'package:food_balancer/ui/foodweekly/nav_drawer.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class WeeklyFoodPage extends StatefulWidget {
   @override
