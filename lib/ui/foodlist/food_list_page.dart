@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_balancer/data/model/task.dart';
-import 'package:food_balancer/ui/foodstore/food_store_controller.dart';
+import 'package:food_balancer/ui/foodlist/food_list_controller.dart';
 
-class FoodPage extends StatelessWidget {
+class FoodListPage extends StatelessWidget {
   late FoodController _taskController;
 
   _showInputDialog(BuildContext context, String title, TaskData taskData) {

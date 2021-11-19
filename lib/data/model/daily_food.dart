@@ -17,10 +17,10 @@ class DailyFoodModel {
 
   DailyFoodModel copyWith({
     int? id = null,
-     String? mainFood = null,
-   String? sideDish = null,
-   String? vegetable = null,
-   String? fruit = null
+    String? mainFood = null,
+    String? sideDish = null,
+    String? vegetable = null,
+    String? fruit = null
   }) {
     return DailyFoodModel(
       id: id ?? this.id,

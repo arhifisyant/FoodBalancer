@@ -25,6 +25,8 @@ class WeeklyFoodController extends GetxController {
       if(value.isEmpty) {
         DatabaseHelper.instances.dbDailyFoodTransaction.insertMultipleData(_createDefaultData())
         .then((value) => _getData());
+        print("you only see this once");
+        //////////////////////////////////////
       } else {
         return value;
       }

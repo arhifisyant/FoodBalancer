@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
-import 'package:food_balancer/ui/navdrawer/nav_drawer.dart';
+import 'package:food_balancer/ui/foodweekly/nav_drawer.dart';
 
 class WeeklyFoodPage extends StatefulWidget {
   @override
@@ -31,8 +31,10 @@ class MainPageState extends State<WeeklyFoodPage> {
     _taskController = Get.put(WeeklyFoodController());
     return Scaffold(
       drawer: NavigationDrawerWidget(),
-      appBar: AppBar(title: Text("Daftar Menu Seminggu"),
-        centerTitle: true,),
+      appBar: AppBar(
+        title: Text("Daftar Menu Seminggu"),
+        //centerTitle: true,
+      ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: Column(
@@ -61,7 +63,8 @@ class MainPageState extends State<WeeklyFoodPage> {
                                 SizedBox(height: 2.0),
                                 Align(
                                     alignment: Alignment.center,
-                                    child: Text(_addDayofName()[index], style: _titleTxtStyle(),)),
+                                    child: Text(_addDayofName()[index], style: _titleTxtStyle(),)
+                                ),
                                 //  Text("\n"),
                                 Divider(color: Colors.white70),
                                 SizedBox(height: 2.0),
