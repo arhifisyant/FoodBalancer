@@ -1,0 +1,16 @@
+class FoodModel {
+  final int? id;
+  final String? title;
+  final FoodType? type;
+  FoodModel({this.id, this.title, this.type});
+  Map<String, dynamic> toMap() {
+    return {'id': id, 'title': title, 'type': type!.toString()};
+  }
+}
+
+enum FoodType { //tipe data untuk membedakan jenis makanan, pakai enum
+  MAIN_FOOD,
+  SIDE_DISH,
+  VEGETABLE,
+  FRUIT
+}

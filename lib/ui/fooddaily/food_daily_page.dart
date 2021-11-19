@@ -1,5 +1,5 @@
-import 'package:food_balancer/data/model/daily_food.dart';
-import 'package:food_balancer/data/model/task.dart';
+import 'package:food_balancer/data/model/daily_food_model.dart';
+import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

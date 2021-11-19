@@ -1,4 +1,4 @@
-import 'package:food_balancer/data/model/task.dart';
+import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/foodeditor/food_editor_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +47,7 @@ class FoodEditorPage extends StatelessWidget {
     );
   }
 
-  _showEditDialog(BuildContext context, String title, TaskData taskData) {
+  _showEditDialog(BuildContext context, String title, FoodModel taskData) {
     return showDialog(context: context,
         builder: (BuildContext builderContext) =>
             AlertDialog(

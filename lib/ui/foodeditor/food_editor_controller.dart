@@ -1,14 +1,14 @@
 import 'package:food_balancer/data/db/db_helper.dart';
-import 'package:food_balancer/data/model/task.dart';
+import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FoodController extends GetxController {
 
-  var task = List<TaskData>.empty().obs;
+  var task = List<FoodModel>.empty().obs;
   set postTask(data) => task.value = data;
-  List<TaskData> get getTask => task.value;
+  List<FoodModel> get getTask => task.value;
 
   late FoodType category;
   late TextEditingController addTaskController;
@@ -39,8 +39,8 @@ class FoodController extends GetxController {
 
   _getData(){
     task.clear();
-    DatabaseHelper.instances.dbMainFoodTransaction.queryAllbased(category.toString()).then((value) {
-      postTask = value.map((e) => TaskData(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
+    DbHelper.instances.tbFoodTransaction.queryAllbased(category.toString()).then((value) {
+      postTask = value.map((e) => FoodModel(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
       // print("result posttask is ${value.map((e) => TaskData(id:e['id'],title: e['title'])).toList().}");
       getTask.forEach((element) {
         print(element.title);
@@ -67,16 +67,16 @@ class FoodController extends GetxController {
     } else if(false) {
       Get.snackbar("Peringatan", "Data Tidak Boleh Kosong");
     } else {
-      final tempData = TaskData(title: addTaskController.text, type: category);
-      await DatabaseHelper.instances.dbMainFoodTransaction.insert(tempData);
+      final tempData = FoodModel(title: addTaskController.text, type: category);
+      await DbHelper.instances.tbFoodTransaction.insert(tempData);
       _getData();
     }
     addTaskController.clear();
   }
 
-  updateData(TaskData data) {
-    final tempData = TaskData(id:data.id, title: addTaskController.text, type: data.type);
-    DatabaseHelper.instances.dbMainFoodTransaction.update(tempData).then((value) {
+  updateData(FoodModel data) {
+    final tempData = FoodModel(id:data.id, title: addTaskController.text, type: data.type);
+    DbHelper.instances.tbFoodTransaction.update(tempData).then((value) {
     var index = task.indexWhere((element) => element.id == data.id);
     getTask[index] = tempData;
     //var test = <TaskData>[]..addAll(getTask);
@@ -93,7 +93,7 @@ class FoodController extends GetxController {
 
   deleteTask(int? id) async {
     if(id != null) {
-      await DatabaseHelper.instances.dbMainFoodTransaction.delete(id);
+      await DbHelper.instances.tbFoodTransaction.delete(id);
       task.removeWhere((element) => element.id == id);
     }
     
