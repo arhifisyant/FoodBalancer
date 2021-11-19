@@ -81,7 +81,7 @@ class FoodDailyPage extends StatelessWidget {
 
           ListTile(leading: Text("Lauk    :"), trailing: DropdownButton(
             value: _updateDataIfNull(FoodType.SIDE_DISH),           
-            onChanged: (String? value){              
+            onChanged: (String? value){
               _weeklySettingsController.udpateData(sideDish: value);
             },
             items: _weeklySettingsController.getTask

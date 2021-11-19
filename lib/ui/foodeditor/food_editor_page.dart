@@ -1,42 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_balancer/data/model/task.dart';
-import 'package:food_balancer/ui/foodlist/food_list_controller.dart';
+import 'package:food_balancer/ui/foodeditor/food_editor_controller.dart';
 
-class FoodListPage extends StatelessWidget {
+class FoodEditorPage extends StatelessWidget {
   late FoodController _taskController;
-
-  _showInputDialog(BuildContext context, String title, TaskData taskData) {
-    return showDialog(context: context,
-    builder: (BuildContext builderContext) =>
-      AlertDialog(
-        title: Text(title),
-        content: Container(
-          child: TextFormField(            
-            controller: _taskController.addTaskController..text = title=="Tambah"? "":taskData.title??"",
-            decoration: InputDecoration(hintText: "Edit Makanan"),
-            maxLength: 20,
-          ),
-        ),
-        actions: [
-          TextButton.icon(onPressed: (){
-            if(title=="Tambah"){
-              _taskController.addData();
-            } else {
-              _taskController.updateData(taskData);
-            }
-            Navigator.pop(builderContext);
-          }, icon: Icon(title=="Edit"?Icons.add:Icons.edit), label: Text(title))
-        ],
-      )
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     _taskController  = Get.put(FoodController(screenType: Get.arguments));
     return Scaffold(
-      appBar: AppBar(title: Text("Daftar")),
+      appBar: AppBar(title: Text("Daftar Makanan")),
       body: Container(
         alignment: Alignment.topLeft,
         padding: EdgeInsets.all(10),
@@ -60,7 +34,7 @@ class FoodListPage extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(onPressed: ()=> _showInputDialog(context, "Edit", _taskController.getTask[index]), icon: Icon(Icons.edit)),
+                    IconButton(onPressed: ()=> _showEditDialog(context, "Edit", _taskController.getTask[index]), icon: Icon(Icons.edit)),
                     IconButton(onPressed: ()=> _taskController.deleteTask(_taskController.getTask[index].id), icon: Icon(Icons.delete))
                   ],
                 ),
@@ -72,4 +46,27 @@ class FoodListPage extends StatelessWidget {
       ),
     );
   }
+
+  _showEditDialog(BuildContext context, String title, TaskData taskData) {
+    return showDialog(context: context,
+        builder: (BuildContext builderContext) =>
+            AlertDialog(
+              title: Text(title),
+              content: Container(
+                child: TextFormField(
+                  controller: _taskController.addTaskController..text = title=="Tambah"? "":taskData.title??"",
+                  decoration: InputDecoration(hintText: "Edit Makanan"),
+                  maxLength: 20,
+                ),
+              ),
+              actions: [
+                TextButton.icon(onPressed: (){
+                  _taskController.updateData(taskData);
+                  Navigator.pop(builderContext);
+                }, icon: Icon(Icons.save), label: Text('Save'))
+              ],
+            )
+    );
+  }
+
 }

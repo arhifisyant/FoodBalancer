@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
-import 'package:food_balancer/ui/pdfviewer/pdf_viewer_page.dart';
+import 'package:food_balancer/ui/pdfguideviewer/pdf_guide_viewer_page.dart';
 import 'package:food_balancer/ui/about/about_page.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
@@ -60,46 +60,6 @@ class NavigationDrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget buildHeader({
-    required String urlImage,
-    required String name,
-    required String email,
-    required VoidCallback onClicked,
-  }) =>
-      InkWell(
-        onTap: onClicked,
-        child: Container(
-          padding: padding.add(EdgeInsets.symmetric(vertical: 40)),
-          child: Row(
-            children: [
-              CircleAvatar(radius: 30, backgroundImage: NetworkImage(urlImage)),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    email,
-                    style: TextStyle(fontSize: 14, color: Colors.white),
-                  ),
-                ],
-              ),
-              Spacer(),
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: Color.fromRGBO(30, 60, 168, 1),
-                child: Icon(Icons.add_comment_outlined, color: Colors.white),
-              )
-            ],
-          ),
-        ),
-      );
-
-
   Widget buildMenuItem({
     required String text,
     required IconData icon,
@@ -132,7 +92,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PdfGuideViewer(),
+          builder: (context) => PdfGuideViewerPage(),
         ));
         break;
       case 3:

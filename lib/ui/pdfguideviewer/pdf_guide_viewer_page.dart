@@ -1,9 +1,9 @@
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:food_balancer/ui/pdfviewer/pdf_view_controller.dart';
+import 'package:food_balancer/ui/pdfguideviewer/pdf_guide_viewer_controller.dart';
 
-class PdfGuideViewer extends StatelessWidget {
+class PdfGuideViewerPage extends StatelessWidget {
   late PdfViewController _taskController;
 
   @override

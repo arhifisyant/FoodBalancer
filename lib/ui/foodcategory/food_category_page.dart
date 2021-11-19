@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_balancer/ui/foodlist/food_list_page.dart';
+import 'package:food_balancer/ui/foodeditor/food_editor_page.dart';
 import 'package:get/get.dart';
 
 enum SCREEN_CAT_TYPE {
@@ -39,8 +39,8 @@ class FoodCategoryPage extends StatelessWidget {
             child: TextButton.icon(onPressed: (){
               final cat = _getData()[index].screenType;
               print("category is $cat");
-              //Get.to(FoodListPage(),arguments: cat);
-              Get.to(() => FoodListPage(),arguments: cat);
+              //Get.to(FoodEditorPage(),arguments: cat);
+              Get.to(() => FoodEditorPage(),arguments: cat);
             }, icon: _getData()[index].icon, label: Text(_getData()[index].label),
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all(
