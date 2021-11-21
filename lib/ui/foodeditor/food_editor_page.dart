@@ -54,7 +54,7 @@ class FoodEditorPage extends StatelessWidget {
               title: Text(title),
               content: Container(
                 child: TextFormField(
-                  controller: _taskController.addTaskController..text = title=="Tambah"? "":taskData.title??"",
+                  controller: _taskController.updateTaskController..text = title=="Tambah"? "":taskData.title??"",
                   decoration: InputDecoration(hintText: "Edit Makanan"),
                   maxLength: 20,
                 ),
@@ -70,3 +70,10 @@ class FoodEditorPage extends StatelessWidget {
   }
 
 }
+
+/*
+task = taskController.addTask
+taskCOntroller.addtask.text = "aku"
+
+
+task = taskController.addTask..text = "aku"*/

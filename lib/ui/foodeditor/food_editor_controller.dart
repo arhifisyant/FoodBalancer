@@ -12,6 +12,7 @@ class FoodEditorController extends GetxController {
 
   late FoodType category;
   late TextEditingController addTaskController;
+  late TextEditingController updateTaskController;
 
   FoodEditorController({required SCREEN_CAT_TYPE screenType}) {
     switch (screenType) {
@@ -33,6 +34,8 @@ class FoodEditorController extends GetxController {
   @override
   void onInit() {
   addTaskController = TextEditingController();
+  updateTaskController = TextEditingController();
+
   _getData();
     super.onInit();
   }
@@ -75,7 +78,7 @@ class FoodEditorController extends GetxController {
   }
 
   updateData(FoodModel data) {
-    final tempData = FoodModel(id:data.id, title: addTaskController.text, type: data.type);
+    final tempData = FoodModel(id:data.id, title: updateTaskController.text, type: data.type);
     DbHelper.instances.tbFoodTransaction.update(tempData).then((value) {
     var index = task.indexWhere((element) => element.id == data.id);
     getTask[index] = tempData;
@@ -88,7 +91,7 @@ class FoodEditorController extends GetxController {
     }
     );
     
-    addTaskController.clear();
+    updateTaskController.clear();
   }
 
   deleteTask(int? id) async {

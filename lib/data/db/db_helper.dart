@@ -114,7 +114,7 @@ class TbFoodHelper{
     Database? db = await instances.database;
     var res = await db.update(DbHelper.table, task.toMap(), where: '${DbHelper.columnId} = ?', whereArgs: [task.id]);
     print("result is ${res}");
-    return res;
+    return res; // kembaliannya -1, 0, dan 1
   }
 
   Future<List<Map<String, dynamic>>> queryAllbased(String category) async {

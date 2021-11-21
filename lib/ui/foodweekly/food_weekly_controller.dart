@@ -18,20 +18,11 @@ class WeeklyFoodController extends GetxController {
     super.onInit();
   }
 
-  _getData() {
+  _getData() { // _private, enggak pake uincerscore public
     DbHelper.instances.tbDailyFoodTransaction.queryAll()
     .then((value) => value.map((e) => FoodDailyModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
-      if(value.isEmpty) { // jika hasil query kosong (akan selalu kosong jika pertama kali di run appnya), maka
-        DbHelper.instances.tbDailyFoodTransaction.insertMultipleData(_createDefaultData()) //bikin data default, hanya sekali setelah aplikasi diinstall atau datanya di clear
-        .then((value) => _getData());
-        print("you only see this once");
-      } else {
-        return value;
-      }
-    })
-    .then((value) {    
-      postTask = value!;
+      postTask = value;
     });
   }
 
