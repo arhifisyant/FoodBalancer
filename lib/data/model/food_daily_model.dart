@@ -1,11 +1,11 @@
-class DailyFoodModel {
+class FoodDailyModel {
   final int? id;
   final String? mainFood;
   final String? sideDish;
   final String? vegetable;
   final String? fruit;
 
-  DailyFoodModel({this.id, this.mainFood = "-", this.sideDish = "-", this.vegetable = "-", this.fruit = "-"});
+  FoodDailyModel({this.id, this.mainFood, this.sideDish, this.vegetable, this.fruit});
   Map<String, dynamic> toMap() => 
   {
     'id': id,
@@ -15,14 +15,14 @@ class DailyFoodModel {
     'fruit': fruit
   };
 
-  DailyFoodModel copyWith({
+  FoodDailyModel copyWith({
     int? id = null,
     String? mainFood = null,
     String? sideDish = null,
     String? vegetable = null,
     String? fruit = null
   }) {
-    return DailyFoodModel(
+    return FoodDailyModel(
       id: id ?? this.id,
       mainFood: mainFood ?? this.mainFood,
       sideDish: sideDish ?? this.sideDish,

@@ -1,5 +1,5 @@
 import 'package:food_balancer/data/db/db_helper.dart';
-import 'package:food_balancer/data/model/daily_food_model.dart';
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/foodeditor/food_editor_controller.dart';
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
@@ -11,9 +11,9 @@ class WeeklySettingsController extends GetxController {
   set postTask(data) => task.value = data;
   List<FoodModel> get getTask => task.value;
 
-  var taskWekData = DailyFoodModel().obs;
+  var taskWekData = FoodDailyModel().obs;
   set postTaskWeekData(data) => taskWekData.value = data;
-  DailyFoodModel get getTaskWekData => taskWekData.value;
+  FoodDailyModel get getTaskWekData => taskWekData.value;
 
   final _taskController = Get.put(WeeklyFoodController());
 
@@ -33,8 +33,8 @@ class WeeklySettingsController extends GetxController {
     taskWekData.value = getTaskWekData.copyWith(mainFood: mainFood, sideDish: sideDish, vegetable: vegetable, fruit: fruit);
   }
 
-  _changeDataIfNull(DailyFoodModel data) {
-    return DailyFoodModel(id: data.id, mainFood: data.mainFood??"-", sideDish: data.sideDish??"-", vegetable: data.vegetable??"-", fruit: data.fruit??"-");
+  _changeDataIfNull(FoodDailyModel data) {
+    return FoodDailyModel(id: data.id, mainFood: data.mainFood??"-", sideDish: data.sideDish??"-", vegetable: data.vegetable??"-", fruit: data.fruit??"-");
   }
 
   updateCurrentData() async {

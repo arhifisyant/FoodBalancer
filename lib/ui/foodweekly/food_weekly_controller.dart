@@ -1,5 +1,5 @@
 import 'package:food_balancer/data/db/db_helper.dart';
-import 'package:food_balancer/data/model/daily_food_model.dart';
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:get/get.dart';
 //import 'package:sqflite/sqlite_api.dart';
@@ -8,9 +8,9 @@ class WeeklyFoodController extends GetxController {
 
   static const DAY_IN_A_WEEK = 7;
 
-  var task = List<DailyFoodModel>.empty().obs;
-  set postTask(List<DailyFoodModel> data) => task.value = data;
-  List<DailyFoodModel> get getTask => task.value;
+  var task = List<FoodDailyModel>.empty().obs;
+  set postTask(List<FoodDailyModel> data) => task.value = data;
+  List<FoodDailyModel> get getTask => task.value;
 
   @override
   void onInit() {
@@ -20,7 +20,7 @@ class WeeklyFoodController extends GetxController {
 
   _getData() {
     DbHelper.instances.tbDailyFoodTransaction.queryAll()
-    .then((value) => value.map((e) => DailyFoodModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
+    .then((value) => value.map((e) => FoodDailyModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
       if(value.isEmpty) { // jika hasil query kosong (akan selalu kosong jika pertama kali di run appnya), maka
         DbHelper.instances.tbDailyFoodTransaction.insertMultipleData(_createDefaultData()) //bikin data default, hanya sekali setelah aplikasi diinstall atau datanya di clear
@@ -35,7 +35,7 @@ class WeeklyFoodController extends GetxController {
     });
   }
 
-  List<DailyFoodModel> _createDefaultData() {
-    return List.filled(DAY_IN_A_WEEK, DailyFoodModel() );
+  List<FoodDailyModel> _createDefaultData() {
+    return List.filled(DAY_IN_A_WEEK, FoodDailyModel() );
   }
 }

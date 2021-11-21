@@ -1,4 +1,4 @@
-import 'package:food_balancer/data/model/daily_food_model.dart';
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +8,8 @@ class FoodDailyPage extends StatelessWidget {
 
   late WeeklySettingsController _weeklySettingsController;
 
-  _cleanData(DailyFoodModel data) {
-    return DailyFoodModel(
+  _cleanData(FoodDailyModel data) {
+    return FoodDailyModel(
       id: data.id,
       mainFood: data.mainFood!.contains("-")?null:data.mainFood,
       sideDish: data.sideDish!.contains("-")?null:data.sideDish,

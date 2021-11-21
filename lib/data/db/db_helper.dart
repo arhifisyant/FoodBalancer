@@ -1,4 +1,4 @@
-import 'package:food_balancer/data/model/daily_food_model.dart';
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -56,7 +56,7 @@ class DbHelper {
       $columnMainFood FLOAT NOT NULL,
       $columnSideDish FLOAT NOT NULL,
       $columnVegetable FLOAT NOT NULL,
-      $columnFruit FLOAT NOT NULL,
+      $columnFruit FLOAT NOT NULL
     )
     ''');
 
@@ -85,9 +85,14 @@ class DbHelper {
     await db.insert(DbHelper.table, FoodModel(title: "Belimbing", type: FoodType.FRUIT).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Nanas", type: FoodType.FRUIT).toMap());
 
-    //isi data default ke tabel dua
-    //await DbHelper.instances.tbDailyFoodTransaction.insertMultipleData(_createDefaultData());
-
+    //isi data ke tabel dua
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
 
   }
 }
@@ -137,13 +142,13 @@ class TbDailyFoodHelper {
   late DbHelper instances;
   TbDailyFoodHelper({required this.instances});
 
-  Future<int> insert(DailyFoodModel task) async {
+  Future<int> insert(FoodDailyModel task) async {
     Database? db = await instances.database;
     var res = await db.insert(DbHelper.dailyTable, task.toMap());
     return res;
   }
 
-  Future<int> update(DailyFoodModel task) async {
+  Future<int> update(FoodDailyModel task) async {
     Database? db = await instances.database;
     var res = await db.update(DbHelper.dailyTable, task.toMap(), where: '${DbHelper.columnId} = ?', whereArgs: [task.id]);
     print("result is ${res}");
@@ -167,7 +172,7 @@ class TbDailyFoodHelper {
     var res = await db.rawQuery("DELETE FROM ${DbHelper.dailyTable}");
   }
 
-  Future<int> insertMultipleData(List<DailyFoodModel> data) async {
+  Future<int> insertMultipleData(List<FoodDailyModel> data) async {
     Database db = await instances.database;
     var strQueryValues = data.map((e) => "(${e.id}, '${e.mainFood}', '${e.sideDish}', '${e.vegetable}', '${e.fruit}')").join(",");
     print("data is $strQueryValues");

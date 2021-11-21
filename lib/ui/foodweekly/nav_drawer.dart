@@ -1,5 +1,5 @@
 import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
-import 'package:food_balancer/ui/pdfguideviewer/pdf_guide_viewer_page.dart';
+import 'package:food_balancer/ui/pdfguide/pdf_guide_page.dart';
 import 'package:food_balancer/ui/about/about_page.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -92,7 +92,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PdfGuideViewerPage(),
+          builder: (context) => PdfGuidePage(),
         ));
         break;
       case 3:
