@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FoodEditorPage extends StatelessWidget {
-  late FoodController _taskController;
+  late FoodEditorController _taskController;
 
   @override
   Widget build(BuildContext context) {
-    _taskController  = Get.put(FoodController(screenType: Get.arguments));
+    _taskController  = Get.put(FoodEditorController(screenType: Get.arguments[0]));
     return Scaffold(
-      appBar: AppBar(title: Text("Daftar Makanan")),
+      appBar: AppBar(title: Text("Atur "+Get.arguments[1].toString())),
       body: Container(
         alignment: Alignment.topLeft,
         padding: EdgeInsets.all(10),

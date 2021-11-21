@@ -5,7 +5,7 @@ import 'package:food_balancer/ui/foodeditor/food_editor_controller.dart';
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:get/get.dart';
 
-class WeeklySettingsController extends GetxController {
+class FoodDailyController extends GetxController {
 
   var task = List<FoodModel>.empty().obs;
   set postTask(data) => task.value = data;
@@ -48,7 +48,7 @@ class WeeklySettingsController extends GetxController {
     DbHelper.instances.tbFoodTransaction.queryAll()
     .then((value) {
       print("value is $value");
-      postTask = value.map((e) => FoodModel(id:e['id'],title: e['title'], type: FoodController.getEnumTypeBasedof(e['type']))).toList();
+      postTask = value.map((e) => FoodModel(id:e['id'],title: e['title'], type: FoodEditorController.getEnumTypeBasedof(e['type']))).toList();
     });
   }
 }

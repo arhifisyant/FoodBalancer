@@ -61,8 +61,9 @@ class DbHelper {
     ''');
 
     //isi data default sebagai percontohan ke tabel satu
-    await db.insert(DbHelper.table, FoodModel(title: "Nasi ", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Nasi", type: FoodType.MAIN_FOOD).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Nasi Kuning", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Nasi Gurih", type: FoodType.MAIN_FOOD).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Roti Tawar", type: FoodType.MAIN_FOOD).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Getuk", type: FoodType.MAIN_FOOD).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Growol", type: FoodType.MAIN_FOOD).toMap());
@@ -76,23 +77,25 @@ class DbHelper {
     await db.insert(DbHelper.table, FoodModel(title: "Oseng Kangkung", type: FoodType.VEGETABLE).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Sayur Asem", type: FoodType.VEGETABLE).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Sayur Gori", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Sayur Daun Pepaya", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Oseng Kacang Panjang", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Daun Pepaya", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Oseng Cang Panjang", type: FoodType.VEGETABLE).toMap());
 
     await db.insert(DbHelper.table, FoodModel(title: "Pisang", type: FoodType.FRUIT).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Pepaya", type: FoodType.FRUIT).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Sawo", type: FoodType.FRUIT).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Belimbing", type: FoodType.FRUIT).toMap());
     await db.insert(DbHelper.table, FoodModel(title: "Nanas", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Jeruk", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.table, FoodModel(title: "Semangka", type: FoodType.FRUIT).toMap());
 
     //isi data ke tabel dua
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
-    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "--", sideDish: "--", vegetable: "--", fruit: "--").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Getuk", sideDish: "Telur Dadar", vegetable: "Oseng Kangkung", fruit: "Pisang").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Nasi", sideDish: "Tahu Bacem", vegetable: "Sayur Asem", fruit: "Pepaya").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Nasi Gurih", sideDish: "Tahu Bacem", vegetable: "Sayur Gori", fruit: "Jeruk").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Roti Tawar", sideDish: "Telur Dadar", vegetable: "Daun Pepaya", fruit: "Nanas").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Nasi", sideDish: "Tempe Goreng", vegetable: "Oseng Cang Panjang", fruit: "Belimbing").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Nasi", sideDish: "Tempe Goreng", vegetable: "Daun Pepaya", fruit: "Semangka").toMap());
+    await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Nasi Kuning", sideDish: "Ayam Goreng", vegetable: "Sayur Asem", fruit: "Pisang").toMap());
 
   }
 }

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class FoodDailyPage extends StatelessWidget {
 
-  late WeeklySettingsController _weeklySettingsController;
+  late FoodDailyController _weeklySettingsController;
 
   _cleanData(FoodDailyModel data) {
     return FoodDailyModel(
@@ -53,11 +53,11 @@ class FoodDailyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _weeklySettingsController = Get.put(WeeklySettingsController());
+    _weeklySettingsController = Get.put(FoodDailyController());
     _weeklySettingsController.postTaskWeekData = _cleanData(Get.arguments);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Menu Harian"),),
+      appBar: AppBar(title: Text("Menu Hari "+Get.arguments.toString()),),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
             _weeklySettingsController.updateCurrentData();

@@ -4,7 +4,7 @@ import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FoodController extends GetxController {
+class FoodEditorController extends GetxController {
 
   var task = List<FoodModel>.empty().obs;
   set postTask(data) => task.value = data;
@@ -13,12 +13,12 @@ class FoodController extends GetxController {
   late FoodType category;
   late TextEditingController addTaskController;
 
-  FoodController({required SCREEN_CAT_TYPE screenType}) {
+  FoodEditorController({required SCREEN_CAT_TYPE screenType}) {
     switch (screenType) {
       case SCREEN_CAT_TYPE.MAINFOOD:
         category = FoodType.MAIN_FOOD;
         break;
-      case SCREEN_CAT_TYPE.SIDEFOOD:
+      case SCREEN_CAT_TYPE.SIDEDISH:
         category = FoodType.SIDE_DISH;
         break;
       case SCREEN_CAT_TYPE.VEGETABLE:
