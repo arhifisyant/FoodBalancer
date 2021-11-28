@@ -26,6 +26,7 @@ class FoodCategoryPage extends StatelessWidget {
               final args1 = _getData()[index].screenType;
               final args2 = _getData()[index].label;
               print("category is $args1");
+              print("label is $args2");
               //Get.to(FoodEditorPage(),arguments: cat);
               Get.to(() => FoodEditorPage(), arguments: [args1, args2]);
             }, icon: _getData()[index].icon, label: Text(_getData()[index].label),

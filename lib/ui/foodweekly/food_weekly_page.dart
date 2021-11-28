@@ -24,7 +24,7 @@ class MainPageState extends State<WeeklyFoodPage> {
     "Minggu"
   ];
 
-  _titleTxtStyle() => TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold,);
+  _titleTxtStyle() => TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold,);
   _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.white,);
   @override
   Widget build(BuildContext context) {
@@ -36,22 +36,26 @@ class MainPageState extends State<WeeklyFoodPage> {
         //centerTitle: true,
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(
           children: [
             Expanded(
                 child: Obx(()=> GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 20
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      childAspectRatio: 1,
+                      mainAxisExtent: 150,
                   ),
                   itemBuilder: (context, index) => Material(
                       color: Colors.green,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: InkWell(
                         onTap: () {
-                          Get.to(() => FoodDailyPage(), arguments: _taskController.getTask[index]); //pakailah syntax ini karena lebih baik daripada
+                          final args1 = _taskController.getTask[index];
+                          final args2 = _addDayofName()[index];
+                          Get.to(() => FoodDailyPage(), arguments: [args1,args2]); //pakailah syntax ini karena lebih baik daripada
                           //Get.to(FoodDailyPage(), arguments: _taskController.getTask[index]); //sintak yang ini
                         },
                         child: Container(
@@ -67,7 +71,7 @@ class MainPageState extends State<WeeklyFoodPage> {
                                 ),
                                 //  Text("\n"),
                                 Divider(color: Colors.white70),
-                                SizedBox(height: 2.0),
+                                //SizedBox(height: 2.0),
                                 Text("Pokok : " + _taskController.getTask[index].mainFood!, style: _descTxtStyle(),),
                                 Text("Lauk    : " + _taskController.getTask[index].sideDish!, style: _descTxtStyle()),
                                 Text("Sayur   : " + _taskController.getTask[index].vegetable!, style: _descTxtStyle()),

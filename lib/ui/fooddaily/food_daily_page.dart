@@ -1,6 +1,8 @@
+import 'package:food_balancer/ui/pdfguide/pdf_guide_page.dart';
 import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
+import 'package:food_balancer/ui/foodeditor/food_editor_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,11 +55,12 @@ class FoodDailyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.black,);
     _weeklySettingsController = Get.put(FoodDailyController());
-    _weeklySettingsController.postTaskWeekData = _cleanData(Get.arguments);
+    _weeklySettingsController.postTaskWeekData = _cleanData(Get.arguments[0]);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Menu Hari "+Get.arguments.toString()),),
+      appBar: AppBar(title: Text("Pilih Menu Hari "+Get.arguments[1].toString()),),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
             _weeklySettingsController.updateCurrentData();
@@ -67,54 +70,98 @@ class FoodDailyPage extends StatelessWidget {
       body: Container(
       child: Obx(() => Column(
         children: [    
-           ListTile(leading: Text("Pokok :"), trailing: DropdownButton(
-            value: _updateDataIfNull(FoodType.MAIN_FOOD),           
-            onChanged: (String? value){              
-              _weeklySettingsController.udpateData(mainFood: value);
-            },
-            items: _weeklySettingsController.getTask
-          .where((element) => element.type== FoodType.MAIN_FOOD)
-          .map((e) {            
-            return DropdownMenuItem(child: Text(e.title!), value: e.title,);
-          }).toList()),),
-          
+           ListTile(
+               leading: Text("Pokok :", style: _descTxtStyle()),
+               subtitle: DropdownButton(
+                  isExpanded: true,
+                  //itemHeight: 200.0,
+                  //itemHeight: null,
+                  value: _updateDataIfNull(FoodType.MAIN_FOOD),
+                  onChanged: (String? value){
+                    _weeklySettingsController.udpateData(mainFood: value);
+                  },
+                  items: _weeklySettingsController.getTask
+                  .where((element) => element.type== FoodType.MAIN_FOOD)
+                  .map((e) {
+                  return DropdownMenuItem(child: Text(e.title!), value: e.title,);
+                  }).toList()),
+               trailing: IconButton(
+                   //onPressed: Get.to(() => FoodEditorPage(), arguments: ["1", "2"],),
+                   onPressed: (()=> FoodEditorPage()),
+                   //onPressed: Get.to(() => PdfGuidePage()),
+                   icon: Icon(Icons.edit),
+               ),
+           ),
 
-          ListTile(leading: Text("Lauk    :"), trailing: DropdownButton(
-            value: _updateDataIfNull(FoodType.SIDE_DISH),           
-            onChanged: (String? value){
-              _weeklySettingsController.udpateData(sideDish: value);
-            },
-            items: _weeklySettingsController.getTask
-          .where((element) => element.type== FoodType.SIDE_DISH)
-          .map((e) {            
-            return DropdownMenuItem(child: Text(e.title!), value: e.title,);
-          }).toList()),),
+
+          ListTile(
+            leading: Text("Lauk    :", style: _descTxtStyle()),
+            subtitle: DropdownButton(
+                isExpanded: true,
+                value: _updateDataIfNull(FoodType.SIDE_DISH),
+                onChanged: (String? value){
+                  _weeklySettingsController.udpateData(sideDish: value);
+                },
+                items: _weeklySettingsController.getTask
+                .where((element) => element.type== FoodType.SIDE_DISH)
+                .map((e) {
+                return DropdownMenuItem(child: Text(e.title!), value: e.title,);
+              }).toList()),
+            trailing: IconButton(
+              onPressed: (()=> FoodEditorPage()),
+              icon: Icon(Icons.edit),
+            ),
+          ),
 
           
-         ListTile(leading: Text("Sayur   :"), trailing: DropdownButton(
+         ListTile(
+           leading: Text("Sayur   :", style: _descTxtStyle()),
+           subtitle: DropdownButton(
+            isExpanded: true,
             value: _updateDataIfNull(FoodType.VEGETABLE),           
             onChanged: (String? value){              
               _weeklySettingsController.udpateData(vegetable: value);
             },
             items: _weeklySettingsController.getTask
-          .where((element) => element.type== FoodType.VEGETABLE)
-          .map((e) {            
+            .where((element) => element.type== FoodType.VEGETABLE)
+            .map((e) {
             return DropdownMenuItem(child: Text(e.title!), value: e.title,);
-          }).toList()),),
+          }).toList()),
+           trailing: IconButton(
+             onPressed: (()=> FoodEditorPage()),
+             icon: Icon(Icons.edit),
+           ),
+         ),
 
-         ListTile(leading: Text("Buah    :"), trailing: DropdownButton(
-            value: _updateDataIfNull(FoodType.FRUIT),           
-            onChanged: (String? value){              
-              _weeklySettingsController.udpateData(fruit: value);
-            },
-            items: _weeklySettingsController.getTask
-          .where((element) => element.type== FoodType.FRUIT)
-          .map((e) {            
-            return DropdownMenuItem(child: Text(e.title!), value: e.title,);
-          }).toList()),),
+         ListTile(
+           leading: Text("Buah    :", style: _descTxtStyle()),
+           subtitle: DropdownButton(
+                isExpanded: true,
+                value: _updateDataIfNull(FoodType.FRUIT),
+                onChanged: (String? value){
+                  _weeklySettingsController.udpateData(fruit: value);
+                },
+                items: _weeklySettingsController.getTask
+                .where((element) => element.type== FoodType.FRUIT)
+                .map((e) {
+                return DropdownMenuItem(child: Text(e.title!), value: e.title,);
+              }).toList()),
+           trailing: IconButton(
+             onPressed: (()=> FoodEditorPage()),
+             icon: Icon(Icons.edit),
+           ),
+         ),
         ],
       )),
     )
     );
   }
+}
+
+
+enum SCREEN_CAT_TYPE {
+  MAINFOOD,
+  SIDEDISH,
+  VEGETABLE,
+  FRUIT
 }

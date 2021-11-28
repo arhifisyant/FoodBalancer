@@ -33,10 +33,9 @@ class FoodEditorController extends GetxController {
 
   @override
   void onInit() {
-  addTaskController = TextEditingController();
-  updateTaskController = TextEditingController();
-
-  _getData();
+    addTaskController = TextEditingController();
+    updateTaskController = TextEditingController();
+    _getData();
     super.onInit();
   }
 
@@ -44,7 +43,6 @@ class FoodEditorController extends GetxController {
     task.clear();
     DbHelper.instances.tbFoodTransaction.queryAllbased(category.toString()).then((value) {
       postTask = value.map((e) => FoodModel(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
-      // print("result posttask is ${value.map((e) => TaskData(id:e['id'],title: e['title'])).toList().}");
       getTask.forEach((element) {
         print(element.title);
       });

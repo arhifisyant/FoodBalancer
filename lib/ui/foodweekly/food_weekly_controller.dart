@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 
 class WeeklyFoodController extends GetxController {
 
-  static const DAY_IN_A_WEEK = 7;
-
   var task = List<FoodDailyModel>.empty().obs;
   set postTask(List<FoodDailyModel> data) => task.value = data;
   List<FoodDailyModel> get getTask => task.value;
@@ -18,7 +16,7 @@ class WeeklyFoodController extends GetxController {
     super.onInit();
   }
 
-  _getData() { // _private, enggak pake uincerscore public
+  _getData() { // kalau pake underscore, artinya methodnya provate, enggak pake uincerscore public
     DbHelper.instances.tbDailyFoodTransaction.queryAll()
     .then((value) => value.map((e) => FoodDailyModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
@@ -26,7 +24,4 @@ class WeeklyFoodController extends GetxController {
     });
   }
 
-  List<FoodDailyModel> _createDefaultData() {
-    return List.filled(DAY_IN_A_WEEK, FoodDailyModel() );
-  }
 }
