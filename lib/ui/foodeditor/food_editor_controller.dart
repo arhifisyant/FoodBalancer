@@ -1,7 +1,7 @@
 import 'package:food_balancer/data/db/db_helper.dart';
 import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
-import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
+import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -116,8 +116,6 @@ class FoodEditorController extends GetxController {
     DbHelper.instances.tbFoodDailyTransaction.update(tempData).then((value) {
       var index = task.indexWhere((element) => element.id == data.id);
       getTaskDaily[index] = tempData;
-      //var test = <TaskData>[]..addAll(getTask);
-      // postTask = test;
       taskDaily[index] = tempData;
       getTaskDaily.forEach((element) {
         print(element.id);

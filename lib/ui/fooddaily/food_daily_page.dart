@@ -154,10 +154,3 @@ class FoodDailyPage extends StatelessWidget {
     );
   }
 }
-
-enum SCREEN_CAT_TYPE {
-  MAINFOOD,
-  SIDEDISH,
-  VEGETABLE,
-  FRUIT
-}

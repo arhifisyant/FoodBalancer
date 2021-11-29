@@ -52,3 +52,10 @@ class FoodDailyController extends GetxController {
     });
   }
 }
+
+enum SCREEN_CAT_TYPE {
+  MAINFOOD,
+  SIDEDISH,
+  VEGETABLE,
+  FRUIT
+}
