@@ -1,4 +1,3 @@
-import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
 import 'package:food_balancer/ui/pdfguide/pdf_guide_page.dart';
 import 'package:food_balancer/ui/about/about_page.dart';
 import 'dart:io';
@@ -18,29 +17,17 @@ class NavigationDrawerWidget extends StatelessWidget {
               padding: padding,
               child: Column(
                 children: [
-                  const SizedBox(height: 24),
-                  buildMenuItem(
-                    text: 'Daftar Menu Seminggu',
-                    icon: Icons.checklist,
-                    onClicked: () => selectedItem(context, 0),
-                  ),
-                  const SizedBox(height: 16),
-                  buildMenuItem(
-                    text: 'Atur Makanan',
-                    icon: Icons.food_bank_outlined,
-                    onClicked: () => selectedItem(context, 1),
-                  ),
                   const SizedBox(height: 16),
                   buildMenuItem(
                     text: 'Pedoman Gizi Seimbang',
                     icon: Icons.library_books,
-                    onClicked: () => selectedItem(context, 2),
+                    onClicked: () => selectedItem(context, 0),
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
                     text: 'Tentang Aplikasi',
                     icon: Icons.info_rounded,
-                    onClicked: () => selectedItem(context, 3),
+                    onClicked: () => selectedItem(context, 1),
                   ),
                   const SizedBox(height: 20),
                   Divider(color: Colors.white70),
@@ -81,21 +68,11 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     switch (index) {
       case 0:
-        /*Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MainPage(),
-        ));*/
-        break;
-      case 1:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FoodCategoryPage(),
-        ));
-        break;
-      case 2:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => PdfGuidePage(),
         ));
         break;
-      case 3:
+      case 1:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => AboutPage(),
         ));

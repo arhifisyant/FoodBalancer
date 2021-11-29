@@ -55,7 +55,7 @@ class FoodEditorPage extends StatelessWidget {
               content: Container(
                 child: TextFormField(
                   controller: _taskController.updateTaskController..text = title=="Tambah"? "":taskData.title??"",
-                  decoration: InputDecoration(hintText: "Edit Makanan"),
+                  decoration: InputDecoration(hintText: "Masukkan Makanan"),
                   maxLength: 20,
                 ),
               ),
@@ -63,7 +63,7 @@ class FoodEditorPage extends StatelessWidget {
                 TextButton.icon(onPressed: (){
                   _taskController.updateData(taskData);
                   Navigator.pop(builderContext);
-                }, icon: Icon(Icons.save), label: Text('Save'))
+                }, icon: Icon(Icons.save), label: Text('Simpan'))
               ],
             )
     );

@@ -1,6 +1,6 @@
 import 'package:food_balancer/data/db/db_helper.dart';
 import 'package:food_balancer/data/model/food_model.dart';
-import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
+import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

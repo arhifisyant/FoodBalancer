@@ -1,4 +1,3 @@
-import 'package:food_balancer/ui/pdfguide/pdf_guide_page.dart';
 import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_controller.dart';
@@ -65,7 +64,7 @@ class FoodDailyPage extends StatelessWidget {
         onPressed: () {
             _weeklySettingsController.updateCurrentData();
         },
-        child: const Icon(Icons.save),
+        child: const Icon(Icons.save)
         ),
       body: Container(
       child: Obx(() => Column(
@@ -86,9 +85,7 @@ class FoodDailyPage extends StatelessWidget {
                   return DropdownMenuItem(child: Text(e.title!), value: e.title,);
                   }).toList()),
                trailing: IconButton(
-                   //onPressed: Get.to(() => FoodEditorPage(), arguments: ["1", "2"],),
-                   onPressed: (()=> FoodEditorPage()),
-                   //onPressed: Get.to(() => PdfGuidePage()),
+                   onPressed: (){Get.to(() => FoodEditorPage(), arguments: [SCREEN_CAT_TYPE.MAINFOOD, "Makanan Pokok"]);},
                    icon: Icon(Icons.edit),
                ),
            ),
@@ -108,7 +105,7 @@ class FoodDailyPage extends StatelessWidget {
                 return DropdownMenuItem(child: Text(e.title!), value: e.title,);
               }).toList()),
             trailing: IconButton(
-              onPressed: (()=> FoodEditorPage()),
+              onPressed: (){Get.to(() => FoodEditorPage(), arguments: [SCREEN_CAT_TYPE.SIDEDISH, "Lauk"]);},
               icon: Icon(Icons.edit),
             ),
           ),
@@ -128,7 +125,7 @@ class FoodDailyPage extends StatelessWidget {
             return DropdownMenuItem(child: Text(e.title!), value: e.title,);
           }).toList()),
            trailing: IconButton(
-             onPressed: (()=> FoodEditorPage()),
+             onPressed: (){Get.to(() => FoodEditorPage(), arguments: [SCREEN_CAT_TYPE.VEGETABLE, "Sayur"]);},
              icon: Icon(Icons.edit),
            ),
          ),
@@ -147,7 +144,7 @@ class FoodDailyPage extends StatelessWidget {
                 return DropdownMenuItem(child: Text(e.title!), value: e.title,);
               }).toList()),
            trailing: IconButton(
-             onPressed: (()=> FoodEditorPage()),
+             onPressed: (){Get.to(() => FoodEditorPage(), arguments: [SCREEN_CAT_TYPE.FRUIT, "Buah"]);},
              icon: Icon(Icons.edit),
            ),
          ),
@@ -157,7 +154,6 @@ class FoodDailyPage extends StatelessWidget {
     );
   }
 }
-
 
 enum SCREEN_CAT_TYPE {
   MAINFOOD,
