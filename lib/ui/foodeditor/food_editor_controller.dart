@@ -1,6 +1,7 @@
 import 'package:food_balancer/data/db/db_helper.dart';
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
-import 'package:food_balancer/ui/foodcategory/food_category_page.dart';
+import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,10 @@ class FoodEditorController extends GetxController {
   var task = List<FoodModel>.empty().obs;
   set postTask(data) => task.value = data;
   List<FoodModel> get getTask => task.value;
+
+  var taskDaily = List<FoodDailyModel>.empty().obs;
+  set postTaskDaily(data) => taskDaily.value = data;
+  List<FoodDailyModel> get getTaskDaily => taskDaily.value;
 
   late FoodType category;
   late TextEditingController addTaskController;
@@ -36,6 +41,7 @@ class FoodEditorController extends GetxController {
     addTaskController = TextEditingController();
     updateTaskController = TextEditingController();
     _getData();
+    _getDataDaily();
     super.onInit();
   }
 
@@ -45,6 +51,20 @@ class FoodEditorController extends GetxController {
       postTask = value.map((e) => FoodModel(id:e['id'],title: e['title'], type: getEnumTypeBasedof(e['type']))).toList().reversed.toList();
       getTask.forEach((element) {
         print(element.title);
+      });
+    }
+    );
+  }
+
+  _getDataDaily(){
+    taskDaily.clear();
+    DbHelper.instances.tbFoodDailyTransaction.queryAll().then((value) {
+      postTaskDaily = value.map((e) => FoodDailyModel(id:e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'],  fruit: e['fruit'], )).toList().reversed.toList();
+      getTaskDaily.forEach((element) {
+        print(element.mainFood);
+        print(element.sideDish);
+        print(element.vegetable);
+        print(element.fruit);
       });
     }
     );
@@ -88,7 +108,22 @@ class FoodEditorController extends GetxController {
     });
     }
     );
-    
+    updateTaskController.clear();
+  }
+
+  updateDataDaily(FoodDailyModel data) {
+    final tempData = FoodDailyModel(id:data.id, mainFood: data.mainFood, sideDish: data.sideDish, vegetable: data.vegetable, fruit: data.fruit);
+    DbHelper.instances.tbFoodDailyTransaction.update(tempData).then((value) {
+      var index = task.indexWhere((element) => element.id == data.id);
+      getTaskDaily[index] = tempData;
+      //var test = <TaskData>[]..addAll(getTask);
+      // postTask = test;
+      taskDaily[index] = tempData;
+      getTaskDaily.forEach((element) {
+        print(element.id);
+      });
+    }
+    );
     updateTaskController.clear();
   }
 

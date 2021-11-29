@@ -1,3 +1,4 @@
+import 'package:food_balancer/data/model/food_daily_model.dart';
 import 'package:food_balancer/data/model/food_model.dart';
 import 'package:food_balancer/ui/foodeditor/food_editor_controller.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,14 @@ class FoodEditorPage extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(onPressed: ()=> _showEditDialog(context, "Edit", _taskController.getTask[index]), icon: Icon(Icons.edit)),
-                    IconButton(onPressed: ()=> _taskController.deleteTask(_taskController.getTask[index].id), icon: Icon(Icons.delete))
+                    IconButton(
+                        onPressed: ()=> _showEditDialog(context, "Edit", _taskController.getTask[index] ),
+                        icon: Icon(Icons.edit)
+                    ),
+                    IconButton(
+                        onPressed: ()=> _taskController.deleteTask(_taskController.getTask[index].id),
+                        icon: Icon(Icons.delete)
+                    )
                   ],
                 ),
               ),
@@ -55,15 +62,17 @@ class FoodEditorPage extends StatelessWidget {
               content: Container(
                 child: TextFormField(
                   controller: _taskController.updateTaskController..text = title=="Tambah"? "":taskData.title??"",
-                  decoration: InputDecoration(hintText: "Edit Makanan"),
+                  decoration: InputDecoration(hintText: "Masukkan Makanan"),
                   maxLength: 20,
                 ),
               ),
               actions: [
                 TextButton.icon(onPressed: (){
                   _taskController.updateData(taskData);
+                  //_taskController.updateDataDaily(taskData.title, "DATACOBA");
+                  //print(taskData.title);
                   Navigator.pop(builderContext);
-                }, icon: Icon(Icons.save), label: Text('Save'))
+                }, icon: Icon(Icons.save), label: Text('Simpan'))
               ],
             )
     );

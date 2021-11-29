@@ -9,10 +9,10 @@ class DbHelper {
   //dibawah ini spesifikasi database sqlitenya
   static final _dbName = "foodbalancer.db";
   static final _dbVers = 2;
-  static final table = "foodtable";
+  static final foodTable = "foodtable";
   static final dailyTable = "dailytable";
 
-  //dibawah ini deklarasi nama kolom di tabel pertama dan kedua
+  //dibawah ini deklarasi nama kolom di tabel foodTable dan dailyTable
   static final columnId = 'id';
   static final columnTitle = 'title';
   static final columnType = 'type';
@@ -23,14 +23,14 @@ class DbHelper {
 
   DbHelper._privateConstructor(){
       tbFoodTransaction = TbFoodHelper(instances: this);
-      tbDailyFoodTransaction = TbDailyFoodHelper(instances: this);
+      tbFoodDailyTransaction = TbFoodDailyHelper(instances: this);
   }
 
   static final instances = DbHelper._privateConstructor();
   static Database? _database;
 
   late TbFoodHelper tbFoodTransaction;
-  late TbDailyFoodHelper tbDailyFoodTransaction;
+  late TbFoodDailyHelper tbFoodDailyTransaction;
 
   Future<Database> get database async {
     return _database ?? await _initDatabase();
@@ -43,7 +43,7 @@ class DbHelper {
   
   Future _onCreate(Database db, int version) async {
     await db.execute('''
-    CREATE TABLE $table(
+    CREATE TABLE $foodTable(
       $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
       $columnTitle FLOAT NOT NULL,
       $columnType FLOAT NOT NULL
@@ -61,32 +61,32 @@ class DbHelper {
     ''');
 
     //isi data default sebagai percontohan ke tabel satu
-    await db.insert(DbHelper.table, FoodModel(title: "Nasi", type: FoodType.MAIN_FOOD).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Nasi Kuning", type: FoodType.MAIN_FOOD).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Nasi Gurih", type: FoodType.MAIN_FOOD).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Roti Tawar", type: FoodType.MAIN_FOOD).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Getuk", type: FoodType.MAIN_FOOD).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Growol", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Nasi", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Nasi Kuning", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Nasi Gurih", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Getuk", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Growol", type: FoodType.MAIN_FOOD).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Jagung Rebus", type: FoodType.MAIN_FOOD).toMap());
 
-    await db.insert(DbHelper.table, FoodModel(title: "Telur Dadar", type: FoodType.SIDE_DISH).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Tahu Bacem", type: FoodType.SIDE_DISH).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Tahu Goreng", type: FoodType.SIDE_DISH).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Tempe Goreng", type: FoodType.SIDE_DISH).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Ayam Goreng", type: FoodType.SIDE_DISH).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Telur Dadar", type: FoodType.SIDE_DISH).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Tahu Bacem", type: FoodType.SIDE_DISH).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Tahu Goreng", type: FoodType.SIDE_DISH).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Tempe Goreng", type: FoodType.SIDE_DISH).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Ayam Goreng", type: FoodType.SIDE_DISH).toMap());
 
-    await db.insert(DbHelper.table, FoodModel(title: "Oseng Kangkung", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Sayur Asem", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Sayur Gori", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Daun Pepaya", type: FoodType.VEGETABLE).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Oseng Cang Panjang", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Oseng Kangkung", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Sayur Asem", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Sayur Gori", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Daun Pepaya", type: FoodType.VEGETABLE).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Oseng Cang Panjang", type: FoodType.VEGETABLE).toMap());
 
-    await db.insert(DbHelper.table, FoodModel(title: "Pisang", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Pepaya", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Sawo", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Belimbing", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Nanas", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Jeruk", type: FoodType.FRUIT).toMap());
-    await db.insert(DbHelper.table, FoodModel(title: "Semangka", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Pisang", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Pepaya", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Sawo", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Belimbing", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Nanas", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Jeruk", type: FoodType.FRUIT).toMap());
+    await db.insert(DbHelper.foodTable, FoodModel(title: "Semangka", type: FoodType.FRUIT).toMap());
 
     //isi data ke tabel dua
     await db.insert(DbHelper.dailyTable, FoodDailyModel(mainFood: "Getuk", sideDish: "Telur Dadar", vegetable: "Oseng Kangkung", fruit: "Pisang").toMap());
@@ -106,44 +106,44 @@ class TbFoodHelper{
 
   Future<int> insert(FoodModel task) async {
     Database? db = await instances.database;
-    var res = await db.insert(DbHelper.table, task.toMap());
+    var res = await db.insert(DbHelper.foodTable, task.toMap());
     return res;
   }
 
   Future<int> update(FoodModel task) async {
     Database? db = await instances.database;
-    var res = await db.update(DbHelper.table, task.toMap(), where: '${DbHelper.columnId} = ?', whereArgs: [task.id]);
+    var res = await db.update(DbHelper.foodTable, task.toMap(), where: '${DbHelper.columnId} = ?', whereArgs: [task.id]);
     print("result is ${res}");
     return res; // kembaliannya -1, 0, dan 1
   }
 
   Future<List<Map<String, dynamic>>> queryAllbased(String category) async {
     Database? db = await instances.database;
-    var res = await db.query(DbHelper.table, orderBy: "${DbHelper.columnId} DESC", where: "${DbHelper.columnType} LIKE ?", whereArgs: [category]);
+    var res = await db.query(DbHelper.foodTable, orderBy: "${DbHelper.columnId} DESC", where: "${DbHelper.columnType} LIKE ?", whereArgs: [category]);
     return res;
   }
 
    Future<List<Map<String, dynamic>>> queryAll() async {
     Database? db = await instances.database;
-    var res = await db.query(DbHelper.table, orderBy: "${DbHelper.columnId} DESC");
+    var res = await db.query(DbHelper.foodTable, orderBy: "${DbHelper.columnId} DESC");
     return res;
   }
 
   Future<int> delete(int id) async{
     Database db = await instances.database;
-    var res = await db.delete(DbHelper.table, where: '${DbHelper.columnId} = ?', whereArgs: [id]);
+    var res = await db.delete(DbHelper.foodTable, where: '${DbHelper.columnId} = ?', whereArgs: [id]);
     return res;
   }
 
   Future<void> clearTable() async {
     Database db = await instances.database;
-    var res = await db.rawQuery("DELETE FROM ${DbHelper.table}");
+    var res = await db.rawQuery("DELETE FROM ${DbHelper.foodTable}");
   }
 }
 
-class TbDailyFoodHelper {
+class TbFoodDailyHelper {
   late DbHelper instances;
-  TbDailyFoodHelper({required this.instances});
+  TbFoodDailyHelper({required this.instances});
 
   Future<int> insert(FoodDailyModel task) async {
     Database? db = await instances.database;

@@ -4,7 +4,7 @@ import 'package:food_balancer/data/model/food_model.dart';
 import 'package:get/get.dart';
 //import 'package:sqflite/sqlite_api.dart';
 
-class WeeklyFoodController extends GetxController {
+class FoodWeeklyController extends GetxController {
 
   var task = List<FoodDailyModel>.empty().obs;
   set postTask(List<FoodDailyModel> data) => task.value = data;
@@ -17,7 +17,7 @@ class WeeklyFoodController extends GetxController {
   }
 
   _getData() { // kalau pake underscore, artinya methodnya provate, enggak pake uincerscore public
-    DbHelper.instances.tbDailyFoodTransaction.queryAll()
+    DbHelper.instances.tbFoodDailyTransaction.queryAll()
     .then((value) => value.map((e) => FoodDailyModel(id: e['id'], mainFood: e['mainFood'], sideDish: e['sideDish'], vegetable: e['vegetable'], fruit: e['fruit'])).toList())
     .then((value) {
       postTask = value;

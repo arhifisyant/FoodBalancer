@@ -15,7 +15,7 @@ class FoodDailyController extends GetxController {
   set postTaskWeekData(data) => taskWekData.value = data;
   FoodDailyModel get getTaskWekData => taskWekData.value;
 
-  final _taskController = Get.put(WeeklyFoodController());
+  final _taskController = Get.put(FoodWeeklyController());
 
 
   @override
@@ -38,7 +38,7 @@ class FoodDailyController extends GetxController {
   }
 
   updateCurrentData() async {
-    var res = await DbHelper.instances.tbDailyFoodTransaction.update(_changeDataIfNull(getTaskWekData))
+    var res = await DbHelper.instances.tbFoodDailyTransaction.update(_changeDataIfNull(getTaskWekData))
     .then((value) => _taskController.onInit())
     .then((value) => Get.back());
     return res;

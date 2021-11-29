@@ -1,18 +1,18 @@
 import 'package:food_balancer/ui/foodweekly/food_weekly_controller.dart';
 import 'package:food_balancer/ui/fooddaily/food_daily_page.dart';
-import 'package:food_balancer/ui/foodweekly/nav_drawer.dart';
+import 'package:food_balancer/ui/foodweekly/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-class WeeklyFoodPage extends StatefulWidget {
+class FoodWeeklyPage extends StatefulWidget {
   @override
   MainPageState createState() => MainPageState();
 }
 
-class MainPageState extends State<WeeklyFoodPage> {
+class MainPageState extends State<FoodWeeklyPage> {
 
-  late WeeklyFoodController _taskController;
+  late FoodWeeklyController _taskController;
 
   _addDayofName() => [
     "Senin",
@@ -28,7 +28,7 @@ class MainPageState extends State<WeeklyFoodPage> {
   _descTxtStyle() => TextStyle(fontSize: 16, color: Colors.white,);
   @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(WeeklyFoodController());
+    _taskController = Get.put(FoodWeeklyController());
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(

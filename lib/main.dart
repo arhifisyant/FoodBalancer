@@ -5,7 +5,7 @@ import 'package:food_balancer/ui/foodweekly/food_weekly_page.dart';
 void main(List<String> args) {
   runApp(
       GetMaterialApp(
-        home: WeeklyFoodPage(),
+        home: FoodWeeklyPage(),
         theme: ThemeData(primarySwatch: Colors.green),
       )
   );
